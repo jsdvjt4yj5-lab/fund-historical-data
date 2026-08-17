@@ -1,5 +1,5 @@
 {
-  "last_scraped": "2026-08-17T12:21:15+00:00",
+  "last_scraped": "2026-08-17T13:08:01+00:00",
   "periods": [
     "3mo",
     "6mo",
@@ -8,37 +8,396 @@
     "5yr",
     "10yr"
   ],
+  "total_targets": 70,
+  "matched_ok": 30,
+  "search_failed": 23,
+  "scrape_incomplete": 17,
   "funds": [
     {
-      "app_label": "PIMCO Income Fund",
-      "fsmone_name": "PIMCO Income Fund Cl E Inc SGD-H",
-      "source_url": "https://secure.fundsupermart.com/fsm/funds/factsheet/ALZP06/PIMCO-Income-Fund-Cl-E-Inc-SGD-H",
+      "target_fund_name": "Allianz Global Investors Fund - Allianz Income and Growth AMi3 (H2-SGD)",
+      "target_manager": "Allianz Global Investors",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/ALZ210/allianz-income-and-growth-cl-ami3-dis-h2-sgd",
+      "match_confidence": 0.655,
+      "match_method": "query_url",
       "returns": {
-        "3mo": "0.95%",
-        "6mo": "-2.01%",
-        "1yr": "1.36%",
-        "3yr": "4.21%",
-        "5yr": "1.06%",
-        "10yr": "2.57%"
+        "3mo": "0.57%",
+        "6mo": "5.72%",
+        "1yr": "9.34%",
+        "3yr": "9.41%",
+        "5yr": "3.56%",
+        "10yr": "7.03%"
       },
+      "ok": true,
       "raw_periods_found": {
-        "1 WK": "0.51%",
-        "1 MTH": "-0.18%",
-        "3 MTH": "0.95%",
-        "6 MTH": "-2.01%",
-        "YTD": "-1.00%",
-        "1 YR": "1.36%",
-        "2 YR": "2.90%",
-        "3 YR": "4.21%",
-        "5 YR": "1.06%",
-        "10 YR": "2.57%"
-      },
-      "ok": true
+        "1 WK": "0.48%",
+        "1 MTH": "0.29%",
+        "3 MTH": "0.57%",
+        "6 MTH": "5.72%",
+        "YTD": "5.91%",
+        "1 YR": "9.34%",
+        "2 YR": "8.98%",
+        "3 YR": "9.41%",
+        "5 YR": "3.56%",
+        "10 YR": "7.03%"
+      }
     },
     {
-      "app_label": "Franklin Income Fund",
-      "fsmone_name": "FTIF - Franklin Income A MDIS SGD-H1",
-      "source_url": "https://secure.fundsupermart.com/fsm/funds/factsheet/FTF020/FTIF-Franklin-Income-A-MDIS-SGD-H1",
+      "target_fund_name": "Amundi Funds - Cash USD A2 USD (C)",
+      "target_manager": "Amundi",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "Amundi Funds - US Bond A2 SGD Hgd (C)",
+      "target_manager": "Amundi",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/HEN068/janus-henderson-balanced-a6m-sgd-h",
+      "match_confidence": 0.464,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "Amundi Funds - US Bond A2 USD (C)",
+      "target_manager": "Amundi",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "Amundi Funds - US Equity Fundamental Growth A USD C",
+      "target_manager": "Amundi",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "Ascend Asia Trust Global Equity Fund Class A SGD (Hedged)",
+      "target_manager": "Ascend Asia AM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD064/schroder-isf-global-gold-a-acc-sgd-h",
+      "match_confidence": 0.516,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.83%",
+        "6mo": "-10.35%",
+        "1yr": "67.43%",
+        "3yr": "54.79%",
+        "5yr": "26.47%",
+        "10yr": "12.10%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.90%",
+        "1 MTH": "19.20%",
+        "3 MTH": "-3.83%",
+        "6 MTH": "-10.35%",
+        "YTD": "3.43%",
+        "1 YR": "67.43%",
+        "2 YR": "66.72%",
+        "3 YR": "54.79%",
+        "5 YR": "26.47%",
+        "10 YR": "12.10%"
+      }
+    },
+    {
+      "target_fund_name": "Ascend Asia Trust Global Multi Asset Growth Fund Class A USD",
+      "target_manager": "Ascend Asia AM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/370115/schroder-multi-asset-revolution-a-dis-sgd",
+      "match_confidence": 0.515,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "3.89%",
+        "6mo": "7.70%",
+        "1yr": "13.80%",
+        "3yr": "12.04%",
+        "5yr": "5.15%",
+        "10yr": "6.96%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.40%",
+        "1 MTH": "1.75%",
+        "3 MTH": "3.89%",
+        "6 MTH": "7.70%",
+        "YTD": "8.49%",
+        "1 YR": "13.80%",
+        "2 YR": "11.41%",
+        "3 YR": "12.04%",
+        "5 YR": "5.15%",
+        "10 YR": "6.96%"
+      }
+    },
+    {
+      "target_fund_name": "Ascend Asia Trust Global Multi Asset Income Fund Class A USD",
+      "target_manager": "Ascend Asia AM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/MAR010/maybank-asian-growth-and-income-i-a-dist-sgd",
+      "match_confidence": 0.5,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "AXA World Funds - Global High Yield Bonds A Capitalisation SGD (Hedged)",
+      "target_manager": "AXA IM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/ALZ001/allianz-global-high-payout-am-sgd",
+      "match_confidence": 0.471,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "6.41%",
+        "6mo": "12.83%",
+        "1yr": "22.45%",
+        "3yr": "19.69%",
+        "5yr": "12.49%",
+        "10yr": "10.79%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "1.06%",
+        "1 MTH": "3.35%",
+        "3 MTH": "6.41%",
+        "6 MTH": "12.83%",
+        "YTD": "14.05%",
+        "1 YR": "22.45%",
+        "2 YR": "19.90%",
+        "3 YR": "19.69%",
+        "5 YR": "12.49%",
+        "10 YR": "10.79%"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - Global Allocation Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/BGF116/blackrock-world-gold-fund-a2-aud-h",
+      "match_confidence": 0.581,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-0.82%",
+        "6mo": "-13.24%",
+        "1yr": "57.20%",
+        "3yr": "45.56%",
+        "5yr": "18.45%",
+        "10yr": "7.52%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "1.21%",
+        "1 MTH": "17.95%",
+        "3 MTH": "-0.82%",
+        "6 MTH": "-13.24%",
+        "YTD": "3.16%",
+        "1 YR": "57.20%",
+        "2 YR": "54.58%",
+        "3 YR": "45.56%",
+        "5 YR": "18.45%",
+        "10 YR": "7.52%"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Energy Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/BGF116/blackrock-world-gold-fund-a2-aud-h",
+      "match_confidence": 0.659,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-0.82%",
+        "6mo": "-13.24%",
+        "1yr": "57.20%",
+        "3yr": "45.56%",
+        "5yr": "18.45%",
+        "10yr": "7.52%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "1.21%",
+        "1 MTH": "17.95%",
+        "3 MTH": "-0.82%",
+        "6 MTH": "-13.24%",
+        "YTD": "3.16%",
+        "1 YR": "57.20%",
+        "2 YR": "54.58%",
+        "3 YR": "45.56%",
+        "5 YR": "18.45%",
+        "10 YR": "7.52%"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Gold Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/BGF116/blackrock-world-gold-fund-a2-aud-h",
+      "match_confidence": 0.744,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-0.82%",
+        "6mo": "-13.24%",
+        "1yr": "57.20%",
+        "3yr": "45.56%",
+        "5yr": "18.45%",
+        "10yr": "7.52%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "1.21%",
+        "1 MTH": "17.95%",
+        "3 MTH": "-0.82%",
+        "6 MTH": "-13.24%",
+        "YTD": "3.16%",
+        "1 YR": "57.20%",
+        "2 YR": "54.58%",
+        "3 YR": "45.56%",
+        "5 YR": "18.45%",
+        "10 YR": "7.52%"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Healthscience Fund A2",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/BGF116/blackrock-world-gold-fund-a2-aud-h",
+      "match_confidence": 0.595,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-0.82%",
+        "6mo": "-13.24%",
+        "1yr": "57.20%",
+        "3yr": "45.56%",
+        "5yr": "18.45%",
+        "10yr": "7.52%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "1.21%",
+        "1 MTH": "17.95%",
+        "3 MTH": "-0.82%",
+        "6 MTH": "-13.24%",
+        "YTD": "3.16%",
+        "1 YR": "57.20%",
+        "2 YR": "54.58%",
+        "3 YR": "45.56%",
+        "5 YR": "18.45%",
+        "10 YR": "7.52%"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Mining Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/BGF116/blackrock-world-gold-fund-a2-aud-h",
+      "match_confidence": 0.659,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-0.82%",
+        "6mo": "-13.24%",
+        "1yr": "57.20%",
+        "3yr": "45.56%",
+        "5yr": "18.45%",
+        "10yr": "7.52%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "1.21%",
+        "1 MTH": "17.95%",
+        "3 MTH": "-0.82%",
+        "6 MTH": "-13.24%",
+        "YTD": "3.16%",
+        "1 YR": "57.20%",
+        "2 YR": "54.58%",
+        "3 YR": "45.56%",
+        "5 YR": "18.45%",
+        "10 YR": "7.52%"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Technology Fund A2",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/BGF116/blackrock-world-gold-fund-a2-aud-h",
+      "match_confidence": 0.642,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-0.82%",
+        "6mo": "-13.24%",
+        "1yr": "57.20%",
+        "3yr": "45.56%",
+        "5yr": "18.45%",
+        "10yr": "7.52%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "1.21%",
+        "1 MTH": "17.95%",
+        "3 MTH": "-0.82%",
+        "6 MTH": "-13.24%",
+        "YTD": "3.16%",
+        "1 YR": "57.20%",
+        "2 YR": "54.58%",
+        "3 YR": "45.56%",
+        "5 YR": "18.45%",
+        "10 YR": "7.52%"
+      }
+    },
+    {
+      "target_fund_name": "Fidelity Funds - Global Financial Services Fund A-Acc-SGD",
+      "target_manager": "Fidelity International",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/NOG011/ninety-one-global-strategy-fund-global-gold-a-acc-sgd",
+      "match_confidence": 0.574,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "Franklin Global Sukuk Fund A(Mdis)SGD",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/FTF020/ftif-franklin-income-a-mdis-sgd-h1",
+      "match_confidence": 0.535,
+      "match_method": "query_url",
       "returns": {
         "3mo": "2.46%",
         "6mo": "2.55%",
@@ -47,6 +406,7 @@
         "5yr": "3.45%",
         "10yr": "3.82%"
       },
+      "ok": true,
       "raw_periods_found": {
         "1 WK": "0.47%",
         "1 MTH": "2.31%",
@@ -58,8 +418,1097 @@
         "3 YR": "7.26%",
         "5 YR": "3.45%",
         "10 YR": "3.82%"
+      }
+    },
+    {
+      "target_fund_name": "Franklin Income Fund A(Mdis)SGD-H1",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/FTF020/ftif-franklin-income-a-mdis-sgd-h1",
+      "match_confidence": 0.794,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "2.46%",
+        "6mo": "2.55%",
+        "1yr": "9.16%",
+        "3yr": "7.26%",
+        "5yr": "3.45%",
+        "10yr": "3.82%"
       },
-      "ok": true
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.47%",
+        "1 MTH": "2.31%",
+        "3 MTH": "2.46%",
+        "6 MTH": "2.55%",
+        "YTD": "5.70%",
+        "1 YR": "9.16%",
+        "2 YR": "6.64%",
+        "3 YR": "7.26%",
+        "5 YR": "3.45%",
+        "10 YR": "3.82%"
+      }
+    },
+    {
+      "target_fund_name": "Franklin India Fund A(acc)SGD",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/FTF020/ftif-franklin-income-a-mdis-sgd-h1",
+      "match_confidence": 0.54,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "2.46%",
+        "6mo": "2.55%",
+        "1yr": "9.16%",
+        "3yr": "7.26%",
+        "5yr": "3.45%",
+        "10yr": "3.82%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.47%",
+        "1 MTH": "2.31%",
+        "3 MTH": "2.46%",
+        "6 MTH": "2.55%",
+        "YTD": "5.70%",
+        "1 YR": "9.16%",
+        "2 YR": "6.64%",
+        "3 YR": "7.26%",
+        "5 YR": "3.45%",
+        "10 YR": "3.82%"
+      }
+    },
+    {
+      "target_fund_name": "Franklin Technology Fund A (Acc) USD",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.484,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "Fundsmith Equity Fund R EUR Acc",
+      "target_manager": "Fundsmith",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "homepage_load_failed",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Asia Bond S47M3HSGD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.563,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Asia Pacific ex Japan Equity High Dividend S48M2SGD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.489,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Global Equity Climate Transition AD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.588,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Global Short Duration Bond ACHSGD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.581,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Indian Equity AD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.52,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "HSBC Life Asian Balanced",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Asian Growth",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Emerging Markets Opportunities Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Fortress Fund A",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Global Balanced Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD063/schroder-isf-global-gold-a-acc-usd",
+      "match_confidence": 0.5,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.04%",
+        "6mo": "-8.75%",
+        "1yr": "73.62%",
+        "3yr": "59.43%",
+        "5yr": "29.49%",
+        "10yr": "14.03%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.95%",
+        "1 MTH": "19.49%",
+        "3 MTH": "-3.04%",
+        "6 MTH": "-8.75%",
+        "YTD": "5.85%",
+        "1 YR": "73.62%",
+        "2 YR": "72.15%",
+        "3 YR": "59.43%",
+        "5 YR": "29.49%",
+        "10 YR": "14.03%"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Global Growth Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD063/schroder-isf-global-gold-a-acc-usd",
+      "match_confidence": 0.516,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.04%",
+        "6mo": "-8.75%",
+        "1yr": "73.62%",
+        "3yr": "59.43%",
+        "5yr": "29.49%",
+        "10yr": "14.03%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.95%",
+        "1 MTH": "19.49%",
+        "3 MTH": "-3.04%",
+        "6 MTH": "-8.75%",
+        "YTD": "5.85%",
+        "1 YR": "73.62%",
+        "2 YR": "72.15%",
+        "3 YR": "59.43%",
+        "5 YR": "29.49%",
+        "10 YR": "14.03%"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Global High Growth Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/ALZ001/allianz-global-high-payout-am-sgd",
+      "match_confidence": 0.515,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "6.41%",
+        "6mo": "12.83%",
+        "1yr": "22.45%",
+        "3yr": "19.69%",
+        "5yr": "12.49%",
+        "10yr": "10.79%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "1.06%",
+        "1 MTH": "3.35%",
+        "3 MTH": "6.41%",
+        "6 MTH": "12.83%",
+        "YTD": "14.05%",
+        "1 YR": "22.45%",
+        "2 YR": "19.90%",
+        "3 YR": "19.69%",
+        "5 YR": "12.49%",
+        "10 YR": "10.79%"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Global Perspective Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Global Secure Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD065/schroder-isf-global-gold-a-acc-eur-h",
+      "match_confidence": 0.469,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.66%",
+        "6mo": "-10.01%",
+        "1yr": "68.35%",
+        "3yr": "55.01%",
+        "5yr": "25.71%",
+        "10yr": "10.82%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.93%",
+        "1 MTH": "19.32%",
+        "3 MTH": "-3.66%",
+        "6 MTH": "-10.01%",
+        "YTD": "3.85%",
+        "1 YR": "68.35%",
+        "2 YR": "67.11%",
+        "3 YR": "55.01%",
+        "5 YR": "25.71%",
+        "10 YR": "10.82%"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Greater China Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life India Opportunities Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Shariah Global Equity",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Short Duration Bond",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Singapore Balanced Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Singapore Bond Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "HSBC Life Singapore Equity Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/370190/amova-singapore-dividend-equity-sgd-formerly-nikko-am",
+      "match_confidence": 0.465,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "5.42%",
+        "6mo": "9.04%",
+        "1yr": "27.10%",
+        "3yr": "18.13%",
+        "5yr": "12.02%",
+        "10yr": "8.88%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "-0.32%",
+        "1 MTH": "1.71%",
+        "3 MTH": "5.42%",
+        "6 MTH": "9.04%",
+        "YTD": "17.11%",
+        "1 YR": "27.10%",
+        "2 YR": "27.10%",
+        "3 YR": "18.13%",
+        "5 YR": "12.02%",
+        "10 YR": "8.88%"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Portfolios - World Selection 5 AMFLXHSGD",
+      "target_manager": "HSBC AM",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "Janus Henderson Horizon Discovering New Alpha Fund A2 HSGD Acc",
+      "target_manager": "Janus Henderson",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/HEN068/janus-henderson-balanced-a6m-sgd-h",
+      "match_confidence": 0.583,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "JPMorgan Funds - Greater China Fund A (acc) USD",
+      "target_manager": "JPMorgan",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.58,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "JPMorgan Funds - India Fund A (acc) USD",
+      "target_manager": "JPMorgan",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.565,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "JPMorgan Investment Funds - Global Income Fund A (mth) SGD (hedged)",
+      "target_manager": "JPMorgan",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.833,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "JPMorgan Investment Funds - Global Income Fund A (mth) USD (hedged)",
+      "target_manager": "JPMorgan",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/JPM138/jpmorgan-investment-funds-global-income-a-icdiv-sgd-h",
+      "match_confidence": 0.817,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "Mirova Funds - Mirova Global Sustainable Equity Fund R/A-NPF (USD)",
+      "target_manager": "Natixis",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/NOG011/ninety-one-global-strategy-fund-global-gold-a-acc-sgd",
+      "match_confidence": 0.462,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "Neuberger Strategic Income Fund SGD A (Monthly) Distributing Class",
+      "target_manager": "Neuberger Berman",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "PGIM Global Total Return Bond Fund SGD Hedged A Distribution (Q) Class",
+      "target_manager": "PGIM",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "Pictet-Premium Brands HP SGD",
+      "target_manager": "Pictet",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/FSBRDG/first-sentier-bridge-a-dis-sgd",
+      "match_confidence": 0.483,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "2.21%",
+        "6mo": "4.36%",
+        "1yr": "11.17%",
+        "3yr": "7.30%",
+        "5yr": "0.56%",
+        "10yr": "3.99%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.24%",
+        "1 MTH": "0.18%",
+        "3 MTH": "2.21%",
+        "6 MTH": "4.36%",
+        "YTD": "6.12%",
+        "1 YR": "11.17%",
+        "2 YR": "9.04%",
+        "3 YR": "7.30%",
+        "5 YR": "0.56%",
+        "10 YR": "3.99%"
+      }
+    },
+    {
+      "target_fund_name": "PIMCO GIS Income Fund Administrative SGD (Hedged) Income",
+      "target_manager": "PIMCO",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "PineBridge Asia ex Japan Small Cap Equity Fund Class A5",
+      "target_manager": "PineBridge",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "Robeco Credit Income BxH SGD",
+      "target_manager": "Robeco",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "Schroder Asian Growth Fund Class SGD A Distribution Units",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/MAR010/maybank-asian-growth-and-income-i-a-dist-sgd",
+      "match_confidence": 0.554,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "Schroder Asian Income SGD X Dis",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD064/schroder-isf-global-gold-a-acc-sgd-h",
+      "match_confidence": 0.537,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.83%",
+        "6mo": "-10.35%",
+        "1yr": "67.43%",
+        "3yr": "54.79%",
+        "5yr": "26.47%",
+        "10yr": "12.10%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.90%",
+        "1 MTH": "19.20%",
+        "3 MTH": "-3.83%",
+        "6 MTH": "-10.35%",
+        "YTD": "3.43%",
+        "1 YR": "67.43%",
+        "2 YR": "66.72%",
+        "3 YR": "54.79%",
+        "5 YR": "26.47%",
+        "10 YR": "12.10%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Global Emerging Market Opportunities Fund",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD063/schroder-isf-global-gold-a-acc-usd",
+      "match_confidence": 0.548,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.04%",
+        "6mo": "-8.75%",
+        "1yr": "73.62%",
+        "3yr": "59.43%",
+        "5yr": "29.49%",
+        "10yr": "14.03%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.95%",
+        "1 MTH": "19.49%",
+        "3 MTH": "-3.04%",
+        "6 MTH": "-8.75%",
+        "YTD": "5.85%",
+        "1 YR": "73.62%",
+        "2 YR": "72.15%",
+        "3 YR": "59.43%",
+        "5 YR": "29.49%",
+        "10 YR": "14.03%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Asian Dividend Maximiser A Distribution SGD Hedged M",
+      "target_manager": "Schroders",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Asian Dividend Maximiser A Distribution USD MF",
+      "target_manager": "Schroders",
+      "matched_url": null,
+      "match_confidence": 0.0,
+      "match_method": "no_search_box_found",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Global Equity Alpha A Accumulation USD",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD063/schroder-isf-global-gold-a-acc-usd",
+      "match_confidence": 0.564,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.04%",
+        "6mo": "-8.75%",
+        "1yr": "73.62%",
+        "3yr": "59.43%",
+        "5yr": "29.49%",
+        "10yr": "14.03%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.95%",
+        "1 MTH": "19.49%",
+        "3 MTH": "-3.04%",
+        "6 MTH": "-8.75%",
+        "YTD": "5.85%",
+        "1 YR": "73.62%",
+        "2 YR": "72.15%",
+        "3 YR": "59.43%",
+        "5 YR": "29.49%",
+        "10 YR": "14.03%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Taiwanese Equity A Accumulation USD",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD063/schroder-isf-global-gold-a-acc-usd",
+      "match_confidence": 0.486,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.04%",
+        "6mo": "-8.75%",
+        "1yr": "73.62%",
+        "3yr": "59.43%",
+        "5yr": "29.49%",
+        "10yr": "14.03%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.95%",
+        "1 MTH": "19.49%",
+        "3 MTH": "-3.04%",
+        "6 MTH": "-8.75%",
+        "YTD": "5.85%",
+        "1 YR": "73.62%",
+        "2 YR": "72.15%",
+        "3 YR": "59.43%",
+        "5 YR": "29.49%",
+        "10 YR": "14.03%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Multi-Asset Revolution 30 A SGD Accumulation",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/370115/schroder-multi-asset-revolution-a-dis-sgd",
+      "match_confidence": 0.787,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "3.89%",
+        "6mo": "7.70%",
+        "1yr": "13.80%",
+        "3yr": "12.04%",
+        "5yr": "5.15%",
+        "10yr": "6.96%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.40%",
+        "1 MTH": "1.75%",
+        "3 MTH": "3.89%",
+        "6 MTH": "7.70%",
+        "YTD": "8.49%",
+        "1 YR": "13.80%",
+        "2 YR": "11.41%",
+        "3 YR": "12.04%",
+        "5 YR": "5.15%",
+        "10 YR": "6.96%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Multi-Asset Revolution 50",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/370115/schroder-multi-asset-revolution-a-dis-sgd",
+      "match_confidence": 0.853,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "3.89%",
+        "6mo": "7.70%",
+        "1yr": "13.80%",
+        "3yr": "12.04%",
+        "5yr": "5.15%",
+        "10yr": "6.96%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.40%",
+        "1 MTH": "1.75%",
+        "3 MTH": "3.89%",
+        "6 MTH": "7.70%",
+        "YTD": "8.49%",
+        "1 YR": "13.80%",
+        "2 YR": "11.41%",
+        "3 YR": "12.04%",
+        "5 YR": "5.15%",
+        "10 YR": "6.96%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Multi-Asset Revolution 70",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/370115/schroder-multi-asset-revolution-a-dis-sgd",
+      "match_confidence": 0.853,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "3.89%",
+        "6mo": "7.70%",
+        "1yr": "13.80%",
+        "3yr": "12.04%",
+        "5yr": "5.15%",
+        "10yr": "6.96%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.40%",
+        "1 MTH": "1.75%",
+        "3 MTH": "3.89%",
+        "6 MTH": "7.70%",
+        "YTD": "8.49%",
+        "1 YR": "13.80%",
+        "2 YR": "11.41%",
+        "3 YR": "12.04%",
+        "5 YR": "5.15%",
+        "10 YR": "6.96%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Singapore Fixed Income Fund Class A Acc",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD063/schroder-isf-global-gold-a-acc-usd",
+      "match_confidence": 0.488,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.04%",
+        "6mo": "-8.75%",
+        "1yr": "73.62%",
+        "3yr": "59.43%",
+        "5yr": "29.49%",
+        "10yr": "14.03%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.95%",
+        "1 MTH": "19.49%",
+        "3 MTH": "-3.04%",
+        "6 MTH": "-8.75%",
+        "YTD": "5.85%",
+        "1 YR": "73.62%",
+        "2 YR": "72.15%",
+        "3 YR": "59.43%",
+        "5 YR": "29.49%",
+        "10 YR": "14.03%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Singapore Trust SGD A Dis",
+      "target_manager": "Schroders",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/SCD064/schroder-isf-global-gold-a-acc-sgd-h",
+      "match_confidence": 0.543,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-3.83%",
+        "6mo": "-10.35%",
+        "1yr": "67.43%",
+        "3yr": "54.79%",
+        "5yr": "26.47%",
+        "10yr": "12.10%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.90%",
+        "1 MTH": "19.20%",
+        "3 MTH": "-3.83%",
+        "6 MTH": "-10.35%",
+        "YTD": "3.43%",
+        "1 YR": "67.43%",
+        "2 YR": "66.72%",
+        "3 YR": "54.79%",
+        "5 YR": "26.47%",
+        "10 YR": "12.10%"
+      }
+    },
+    {
+      "target_fund_name": "Templeton Shariah Global Equity Fund A(acc)SGD",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/NOG011/ninety-one-global-strategy-fund-global-gold-a-acc-sgd",
+      "match_confidence": 0.545,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "raw_periods_found": {}
+    },
+    {
+      "target_fund_name": "United SGD Fund - Class A SGD Acc",
+      "target_manager": "UOBAM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/BGF116/blackrock-world-gold-fund-a2-aud-h",
+      "match_confidence": 0.462,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "-0.82%",
+        "6mo": "-13.24%",
+        "1yr": "57.20%",
+        "3yr": "45.56%",
+        "5yr": "18.45%",
+        "10yr": "7.52%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "1.21%",
+        "1 MTH": "17.95%",
+        "3 MTH": "-0.82%",
+        "6 MTH": "-13.24%",
+        "YTD": "3.16%",
+        "1 YR": "57.20%",
+        "2 YR": "54.58%",
+        "3 YR": "45.56%",
+        "5 YR": "18.45%",
+        "10 YR": "7.52%"
+      }
+    },
+    {
+      "target_fund_name": "United Singapore Bond Fund - Class A SGD Acc",
+      "target_manager": "UOBAM",
+      "matched_url": "https://fsm.global/sg/funds/factsheet/ALZ210/allianz-income-and-growth-cl-ami3-dis-h2-sgd",
+      "match_confidence": 0.465,
+      "match_method": "query_url",
+      "returns": {
+        "3mo": "0.57%",
+        "6mo": "5.72%",
+        "1yr": "9.34%",
+        "3yr": "9.41%",
+        "5yr": "3.56%",
+        "10yr": "7.03%"
+      },
+      "ok": true,
+      "raw_periods_found": {
+        "1 WK": "0.48%",
+        "1 MTH": "0.29%",
+        "3 MTH": "0.57%",
+        "6 MTH": "5.72%",
+        "YTD": "5.91%",
+        "1 YR": "9.34%",
+        "2 YR": "8.98%",
+        "3 YR": "9.41%",
+        "5 YR": "3.56%",
+        "10 YR": "7.03%"
+      }
     }
   ]
 }

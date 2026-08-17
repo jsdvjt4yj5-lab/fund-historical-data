@@ -127,6 +127,25 @@ def collect_factsheet_links(page) -> list[dict]:
         return []
 
 
+def dismiss_cookie_banner(page) -> None:
+    """FSM Global shows a 'We use cookies... CLOSE / FIND OUT MORE' banner
+    on first load of a fresh (cookie-less) browser context -- confirmed by
+    finding that exact text in a debug page-text dump. It visually dims the
+    *entire* page (not just the banner corner), which means it's sitting
+    behind a page-wide backdrop that swallows clicks anywhere on the page,
+    including the header search icon far away from the banner itself. This
+    is why the very first coordinate-click attempt at the search icon did
+    nothing on every single fund in that run. Must be dismissed before any
+    other interaction. Safe no-op if the banner isn't present."""
+    try:
+        close_btn = page.get_by_text("CLOSE", exact=True).first
+        if close_btn.count() > 0:
+            close_btn.click(timeout=3000)
+            page.wait_for_timeout(500)
+    except Exception:
+        pass
+
+
 def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
     """Search FSMOne for a fund by name and return (url, match_score, method).
 
@@ -168,18 +187,27 @@ def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
 
     try:
         page.goto(FSM_HOME, wait_until="networkidle", timeout=30000)
-        page.wait_for_timeout(1000)
+        page.wait_for_timeout(1200)
     except Exception:
         return None, 0.0, "homepage_load_failed"
 
+    dismiss_cookie_banner(page)
+
     # Open the search input: click the magnifying-glass icon by its known
     # fixed position, then confirm an input actually appeared rather than
-    # assuming the click worked.
-    try:
-        page.mouse.click(*SEARCH_ICON_XY)
-        page.wait_for_timeout(600)
-    except Exception:
-        return None, 0.0, "search_icon_click_failed"
+    # assuming the click worked. Try a couple of nearby coordinates too, in
+    # case the pixel estimate is slightly off, now that the cookie banner's
+    # page-wide backdrop (confirmed via a debug page-text dump to have been
+    # swallowing every click on the previous run) is out of the way.
+    icon_x, icon_y = SEARCH_ICON_XY
+    for dx, dy in ((0, 0), (0, -6), (0, 6), (-6, 0), (6, 0)):
+        try:
+            page.mouse.click(icon_x + dx, icon_y + dy)
+            page.wait_for_timeout(500)
+        except Exception:
+            continue
+        if page.locator("input").count() > 0:
+            break
 
     search_box = None
     # Prefer a purpose-named input if one shows up now that the icon's been

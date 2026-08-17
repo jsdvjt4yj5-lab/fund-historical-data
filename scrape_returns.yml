@@ -1,0 +1,65 @@
+name: Scrape fund returns
+
+on:
+  schedule:
+    - cron: '0 22 * * *'   # once a day, 6am SGT -- historical returns don't
+                            # move intraday the way prices do, so this runs
+                            # far less often than the price scraper.
+  workflow_dispatch: {}     # allows manual trigger from the Actions tab
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r requirements.txt
+
+      # Playwright needs its own browser binary downloaded separately from
+      # the pip package, plus OS-level dependencies for headless Chromium.
+      # --with-deps installs those apt packages too (works on GitHub-hosted
+      # ubuntu-latest runners, which have full root access, unlike some
+      # restricted sandboxes).
+      - run: playwright install --with-deps chromium
+
+      - run: python scrape_fund_returns.py --targets targets.csv --out data/fund_returns.json
+
+      # With 70 funds being individually searched-for and scraped, some
+      # per-fund failures are expected and shouldn't block committing the
+      # funds that DID work -- so this script exits 0 even with partial
+      # failures, and this step runs with `if: always()` (not just on a
+      # hard job failure) so any screenshot + raw page text saved under
+      # data/debug_returns/ for the funds that failed still gets uploaded
+      # as a downloadable artifact, same pattern as the price scraper's
+      # debug HTML, instead of committing debug files into git history.
+      - name: Upload debug artifacts (any fund failures)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-returns
+          path: data/debug_returns/
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Commit updated data
+        if: always()
+        run: |
+          git config user.name "fund-price-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/fund_returns.json
+          git diff --quiet --cached || git commit -m "Update fund returns $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+          # The branch can move between checkout and this step (e.g. someone
+          # pushing a file via the GitHub web UI while the job is running),
+          # which makes a plain `git push` get rejected as a non-fast-forward.
+          # Rebase onto the latest remote main and retry a couple of times
+          # before giving up, rather than failing the whole run over a race.
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push attempt $attempt failed, retrying..."
+            sleep 5
+          done

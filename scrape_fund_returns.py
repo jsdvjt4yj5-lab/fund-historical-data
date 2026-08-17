@@ -146,7 +146,7 @@ def dismiss_cookie_banner(page) -> None:
         pass
 
 
-def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
+def find_fund_url(page, fund_name: str, debug_dump_prefix: str | None = None) -> tuple[str | None, float, str]:
     """Search FSMOne for a fund by name and return (url, match_score, method).
 
     Rewritten after inspecting real debug screenshots from the first
@@ -199,62 +199,63 @@ def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
     # confirmed there is exactly ONE <input> anywhere on the page before
     # interacting (an unrelated checkbox) -- proving the earlier
     # coordinate-based page.mouse.click() attempts genuinely never
-    # triggered anything, whether from a slightly-off pixel guess or from
-    # clicking before Angular finished attaching its event listeners.
-    # Playwright's locator .click() is used instead of raw coordinates: it
-    # auto-waits for the element to be attached/visible/stable and retries
-    # within its timeout, which is a much better fit for an Angular SPA's
-    # hydration timing than a fixed sleep.
-    clicked = False
-    for sel in ("i.anticon-search", "i[nztype='search']", ".anticon-search"):
-        try:
-            icon = page.locator(sel).first
-            if icon.count() > 0:
-                icon.click(timeout=6000)
-                clicked = True
-                break
-        except Exception:
-            continue
-
-    if not clicked:
-        # Fall back to the coordinate guess only if the real selector
-        # somehow isn't there (e.g. a markup change) -- better than nothing.
-        try:
-            page.mouse.click(*SEARCH_ICON_XY)
-        except Exception:
-            pass
-
-    page.wait_for_timeout(800)
-
+    # triggered anything. Playwright's locator .click() is used instead of
+    # raw coordinates for its auto-wait/retry semantics, but empirically it
+    # still only opens the input on roughly 1 in 7 tries -- almost
+    # certainly a race against Angular's own event-binding/hydration
+    # rather than the click itself failing, since the *same* selector click
+    # on the *same* static page sometimes works and sometimes doesn't. So
+    # this retries the whole click-then-look-for-input cycle a few times
+    # before giving up, with an increasing wait each time.
     search_box = None
-    # Prefer a purpose-named input if one shows up now that the icon's been
-    # clicked; otherwise fall back to "whatever visible text input just
-    # appeared", since the exact markup couldn't be inspected beforehand.
     named_selectors = [
         "input[type='search']",
         "input[placeholder*='search' i]",
         "input[aria-label*='search' i]",
         "input[name*='search' i]",
     ]
-    for sel in named_selectors:
-        loc = page.locator(sel).first
-        try:
-            if loc.count() > 0 and loc.is_visible():
-                search_box = loc
-                break
-        except Exception:
-            continue
-
-    if search_box is None:
-        try:
-            candidates = page.locator("input[type='text'], input:not([type])")
-            for idx in range(min(candidates.count(), 8)):
-                cand = candidates.nth(idx)
-                if cand.is_visible():
-                    search_box = cand
+    for attempt in range(3):
+        clicked = False
+        for sel in ("i.anticon-search", "i[nztype='search']", ".anticon-search"):
+            try:
+                icon = page.locator(sel).first
+                if icon.count() > 0:
+                    icon.click(timeout=6000)
+                    clicked = True
                     break
-        except Exception:
-            pass
+            except Exception:
+                continue
+
+        if not clicked:
+            try:
+                page.mouse.click(*SEARCH_ICON_XY)
+            except Exception:
+                pass
+
+        page.wait_for_timeout(1000 + attempt * 700)
+
+        for sel in named_selectors:
+            loc = page.locator(sel).first
+            try:
+                if loc.count() > 0 and loc.is_visible():
+                    search_box = loc
+                    break
+            except Exception:
+                continue
+
+        if search_box is None:
+            try:
+                candidates = page.locator("input[type='text'], input:not([type])")
+                for idx in range(min(candidates.count(), 8)):
+                    cand = candidates.nth(idx)
+                    if cand.is_visible():
+                        search_box = cand
+                        break
+            except Exception:
+                pass
+
+        if search_box is not None:
+            break
 
     if search_box is None:
         return None, 0.0, "no_search_box_found"
@@ -265,6 +266,13 @@ def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
         page.wait_for_timeout(2000)
     except Exception:
         return None, 0.0, "search_box_interaction_failed"
+
+    if debug_dump_prefix:
+        try:
+            with open(debug_dump_prefix + "_after_type.html", "w", encoding="utf-8") as f:
+                f.write(page.content())
+        except Exception:
+            pass
 
     links = collect_factsheet_links(page)
     if links:
@@ -278,15 +286,26 @@ def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
     except Exception:
         pass
 
+    if debug_dump_prefix:
+        try:
+            with open(debug_dump_prefix + "_after_enter.html", "w", encoding="utf-8") as f:
+                f.write(page.content())
+        except Exception:
+            pass
+
     links = collect_factsheet_links(page)
     if links:
         best, score = best_of(links)
         if best and score >= SEARCH_MATCH_THRESHOLD:
             return best["href"], score, "results_page"
-        if best:
-            return best["href"], score, "results_page_low_confidence"
 
-    return None, 0.0, "no_links_found"
+    # No "return the best guess even though it's below threshold" fallback
+    # here anymore -- that was the exact mechanism that produced silently
+    # wrong matches in earlier runs (a below-threshold "best of" link is
+    # almost always noise from a generic recommended-funds list elsewhere
+    # on the page, not a real match). Below threshold now means a clean
+    # failure instead of a confident-looking wrong answer.
+    return None, 0.0, "no_confident_match"
 
 
 def scrape_returns_page(page, url: str) -> dict:
@@ -364,6 +383,7 @@ def main():
         targets = targets[: args.limit]
 
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
+    os.makedirs(args.debug_dir, exist_ok=True)
 
     results = []
     n_ok = 0
@@ -390,7 +410,14 @@ def main():
             }
 
             try:
-                url, score, method = find_fund_url(page, fund_name)
+                # Dump the real dropdown/results-page HTML for the very
+                # first fund only, regardless of whether it succeeds --
+                # needed to scope collect_factsheet_links() to the actual
+                # results container instead of the whole page (which has
+                # been shown twice now to pick up a generic "Recommended
+                # Funds" list elsewhere on the page as false-positive noise).
+                dump_prefix = os.path.join(args.debug_dir, "000_dropdown") if i == 0 else None
+                url, score, method = find_fund_url(page, fund_name, debug_dump_prefix=dump_prefix)
             except Exception as e:
                 print(f"  search error: {e}", file=sys.stderr)
                 url, score, method = None, 0.0, f"exception:{e}"

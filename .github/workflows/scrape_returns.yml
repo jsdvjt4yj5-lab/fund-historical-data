@@ -26,24 +26,27 @@ jobs:
       # restricted sandboxes).
       - run: playwright install --with-deps chromium
 
-      - run: python scrape_fund_returns.py --out data/fund_returns.json
+      - run: python scrape_fund_returns.py --targets targets.csv --out data/fund_returns.json
 
-      # If any fund's returns couldn't be fully parsed, scrape_fund_returns.py
-      # exits non-zero and leaves a screenshot + raw page text per failing
-      # fund under data/debug_returns/. Upload those as a downloadable
-      # artifact (same pattern as the price scraper's debug HTML) instead of
-      # committing them into git history.
-      - name: Upload debug artifacts on failure
-        if: failure()
+      # With 70 funds being individually searched-for and scraped, some
+      # per-fund failures are expected and shouldn't block committing the
+      # funds that DID work -- so this script exits 0 even with partial
+      # failures, and this step runs with `if: always()` (not just on a
+      # hard job failure) so any screenshot + raw page text saved under
+      # data/debug_returns/ for the funds that failed still gets uploaded
+      # as a downloadable artifact, same pattern as the price scraper's
+      # debug HTML, instead of committing debug files into git history.
+      - name: Upload debug artifacts (any fund failures)
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: debug-returns
           path: data/debug_returns/
-          if-no-files-found: warn
+          if-no-files-found: ignore
           retention-days: 7
 
       - name: Commit updated data
-        if: success()
+        if: always()
         run: |
           git config user.name "fund-price-bot"
           git config user.email "actions@users.noreply.github.com"

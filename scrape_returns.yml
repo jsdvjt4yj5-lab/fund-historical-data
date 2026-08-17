@@ -26,7 +26,22 @@ jobs:
       # restricted sandboxes).
       - run: playwright install --with-deps chromium
 
-      - run: python scrape_fund_returns.py --targets targets.csv --out data/fund_returns.json
+      # Step 1: confirmed official PDFs (Franklin/PIMCO-style direct URLs,
+      # extended to every fund we could find a verified HSBC/manager PDF
+      # for -- see FUND_PDF_MAP in scrape_pdf_returns.py). No browser, no
+      # search, no wrong-match risk -- this is the trusted source.
+      - run: python scrape_pdf_returns.py --out data/fund_returns_pdf.json
+        continue-on-error: true
+
+      # Step 2: FSMOne search+scrape fallback, still run over the full
+      # roster (including funds already covered by step 1 -- cheap
+      # insurance in case a PDF extraction silently failed) so nothing is
+      # ever worse off than before the PDF pass existed.
+      - run: python scrape_fund_returns.py --targets targets.csv --out data/fund_returns_fsmone.json
+
+      # Step 3: merge -- PDF result wins whenever it succeeded, FSMOne
+      # fills in everything else.
+      - run: python merge_returns.py --pdf data/fund_returns_pdf.json --fsmone data/fund_returns_fsmone.json --out data/fund_returns.json
 
       # With 70 funds being individually searched-for and scraped, some
       # per-fund failures are expected and shouldn't block committing the
@@ -50,7 +65,7 @@ jobs:
         run: |
           git config user.name "fund-price-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/fund_returns.json
+          git add data/fund_returns.json data/fund_returns_pdf.json data/fund_returns_fsmone.json
           git diff --quiet --cached || git commit -m "Update fund returns $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
           # The branch can move between checkout and this step (e.g. someone

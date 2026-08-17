@@ -286,7 +286,31 @@ def scrape_returns_page(page, url: str) -> dict:
     return {"returns": returns, "raw_periods_found": raw, "ok": ok, "page_text": page_text}
 
 
-def save_debug(debug_dir, n, key, page):
+def dump_header_html(page) -> str:
+    """Grab the actual markup of the header/nav area (and count real
+    <input> elements anywhere on the page) so a failure can be diagnosed
+    from real selectors/attributes instead of guessing from a screenshot
+    again. Kept targeted (not the whole page.content(), which for an SPA
+    like this is enormous and mostly irrelevant JS/style bundle noise)."""
+    try:
+        return page.evaluate(
+            """() => {
+                const parts = [];
+                document.querySelectorAll('header, nav, [class*="header" i], [class*="navbar" i], [class*="search" i]').forEach(el => {
+                    parts.push(el.outerHTML);
+                });
+                const inputs = Array.from(document.querySelectorAll('input')).map(
+                    i => `<input type=${JSON.stringify(i.type)} name=${JSON.stringify(i.name)} placeholder=${JSON.stringify(i.placeholder)} aria-label=${JSON.stringify(i.getAttribute('aria-label'))} class=${JSON.stringify(i.className)} visible=${i.offsetParent !== null}>`
+                );
+                return '=== HEADER/NAV/SEARCH-CLASS ELEMENTS ===\\n' + parts.join('\\n---\\n') +
+                       '\\n\\n=== ALL <input> ELEMENTS ON PAGE (' + inputs.length + ') ===\\n' + inputs.join('\\n');
+            }"""
+        )
+    except Exception as e:
+        return f"dump_header_html failed: {e}"
+
+
+def save_debug(debug_dir, n, key, page, save_html=False):
     os.makedirs(debug_dir, exist_ok=True)
     try:
         page.screenshot(path=f"{debug_dir}/{n:03d}_{key}.png", full_page=True)
@@ -297,6 +321,12 @@ def save_debug(debug_dir, n, key, page):
             f.write(page.inner_text("body"))
     except Exception:
         pass
+    if save_html:
+        try:
+            with open(f"{debug_dir}/{n:03d}_{key}_header.html", "w", encoding="utf-8") as f:
+                f.write(dump_header_html(page))
+        except Exception:
+            pass
 
 
 def slugify(name: str) -> str:
@@ -354,7 +384,12 @@ def main():
             if not url:
                 n_search_fail += 1
                 print(f"  SEARCH FAILED ({method})")
-                save_debug(args.debug_dir, i, key + "_search", page)
+                # Only dump the real header/nav HTML for the very first
+                # failure -- it's the same static homepage every time, so
+                # one real markup dump is enough to fix the selectors,
+                # and skipping it for the other 69 keeps the debug artifact
+                # small.
+                save_debug(args.debug_dir, i, key + "_search", page, save_html=(n_search_fail == 1))
                 results.append(entry)
                 continue
 

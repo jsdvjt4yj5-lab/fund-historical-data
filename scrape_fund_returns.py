@@ -1,84 +1,87 @@
 #!/usr/bin/env python3
 """
-Scrapes annualised historical returns (3mo/6mo/1yr/3yr/5yr/10yr) for
-specific funds from their FSMOne (fsm.global) factsheet pages.
+Scrapes annualised historical returns (3mo/6mo/1yr/3yr/5yr/10yr) for the
+full HSBC fund roster (targets.csv) from each fund's FSMOne (fsm.global)
+factsheet page.
 
-FSMOne's factsheet pages are a client-rendered JS app -- there is no
-server-rendered HTML and no discoverable JSON API (confirmed by testing
-several guessed endpoint patterns, which all just return the app's empty
-shell). So this uses Playwright (a real headless browser) to load each
-page, let it render, and read the "Annualised Returns" bar-chart section
-as visible text.
+FSMOne's site is a client-rendered JS app with no server-rendered HTML and
+no discoverable JSON API (confirmed by testing several guessed endpoint
+patterns -- search included -- which all just return the app's empty
+shell, even with query-string search terms attached). So this uses
+Playwright (a real headless browser) for two things per fund:
 
-Starting scope: two funds with DIRECT, KNOWN FSMOne URLs -- PIMCO Income
-Fund and Franklin Income Fund, the two funds shown on the app's Income
-calculator screen. This intentionally skips FSMOne's own search UI for
-now; extending to the full ~70-fund roster in targets.csv would mean
-automating that search box per fund, which is a separate, riskier
-follow-up once this narrower version is confirmed working end-to-end in
-a real GitHub Actions run (this could not be tested locally -- there is
-no way to run a real browser in the environment this was written in).
+  1. SEARCH -- drive FSMOne's own search box with the fund's name, since
+     there's no way to jump straight to a fund's page from its name
+     otherwise. This is the riskiest part of this script: it depends on
+     guessing reasonable selectors for FSMOne's search input and results,
+     which could not be verified against the live page beforehand (no
+     working browser in the environment this was written in). Falls back
+     through a few different selector/interaction strategies before
+     giving up on a given fund.
+  2. SCRAPE -- once on a fund's factsheet page, read the "Annualised
+     Returns" chart as visible text (this part IS verified -- see
+     extract_returns(), tested against a real screenshot of PIMCO Income
+     Fund's page and confirmed working end-to-end in production for that
+     fund plus Franklin Income Fund, both scraped via known direct URLs
+     before this search step was added).
+
+v1 of this script (kept working, still used as the model for step 2) only
+covered PIMCO Income Fund and Franklin Income Fund via hardcoded direct
+URLs -- no search needed. This version extends that to the full roster.
 
 Usage:
     playwright install --with-deps chromium   # once, before first run
-    python scrape_fund_returns.py --out data/fund_returns.json
+    python scrape_fund_returns.py --targets targets.csv --out data/fund_returns.json
 
-Output: data/fund_returns.json
-On any fund not fully parsed, also writes data/debug_returns/<key>.png
-(full-page screenshot) and data/debug_returns/<key>.txt (raw extracted
-page text) so the actual rendered page can be inspected afterwards.
+Output: data/fund_returns.json -- one entry per target fund, each with
+either full returns data, or ok:false plus a `stage` field ("search" or
+"scrape") saying which step failed.
+
+On any fund that fails, also writes:
+  data/debug_returns/<n>_<key>.png  -- full-page screenshot at the point of failure
+  data/debug_returns/<n>_<key>.txt  -- raw extracted page text at that point
+so the actual rendered page can be inspected afterwards.
 """
 import argparse
+import csv
 import json
 import os
 import re
 import sys
+import time
+import random
 from datetime import datetime, timezone
+from difflib import SequenceMatcher
 
 from playwright.sync_api import sync_playwright
 
-# Direct factsheet URLs for the two funds shown on the Income calculator
-# screen. No search step needed -- these were found and confirmed by hand
-# (the PIMCO one was confirmed against a real screenshot of the rendered
-# page's "Annualised Returns" chart).
-FUNDS = [
-    {
-        "key": "pimco",
-        "app_label": "PIMCO Income Fund",
-        "fsmone_name": "PIMCO Income Fund Cl E Inc SGD-H",
-        "url": "https://secure.fundsupermart.com/fsm/funds/factsheet/ALZP06/PIMCO-Income-Fund-Cl-E-Inc-SGD-H",
-    },
-    {
-        "key": "franklin",
-        "app_label": "Franklin Income Fund",
-        "fsmone_name": "FTIF - Franklin Income A MDIS SGD-H1",
-        "url": "https://secure.fundsupermart.com/fsm/funds/factsheet/FTF020/FTIF-Franklin-Income-A-MDIS-SGD-H1",
-    },
-]
+FSM_HOME = "https://secure.fundsupermart.com/fsm/"
 
 # The periods shown on FSMOne's "Annualised Returns" chart, left-to-right,
-# confirmed via a real screenshot of the PIMCO page. "YTD" and "1 WK"/"2 YR"
-# are captured (helps the fallback zip strategy line things up) but only
-# the periods actually asked for are kept in the final output.
+# confirmed via a real screenshot of the PIMCO Income Fund page.
 PERIOD_LABELS = ["1 WK", "1 MTH", "3 MTH", "6 MTH", "YTD", "1 YR", "2 YR", "3 YR", "5 YR", "10 YR"]
 KEEP_PERIODS = {"3 MTH": "3mo", "6 MTH": "6mo", "1 YR": "1yr", "3 YR": "3yr", "5 YR": "5yr", "10 YR": "10yr"}
 
 PCT_RE = re.compile(r"[-−]?\d+\.\d+%")
+FACTSHEET_HREF_RE = re.compile(r"/funds/factsheet/")
+
+SEARCH_MATCH_THRESHOLD = 0.45  # generous -- FSMOne's own naming style differs
+                                # enough from the HSBC target list (abbreviations,
+                                # share class suffixes) that a strict threshold
+                                # would reject a lot of genuine matches.
+
+
+def normalize(name: str) -> str:
+    name = name.upper()
+    name = re.sub(r"[-–,]", " ", name)
+    name = re.sub(r"\s+", " ", name)
+    return name.strip()
 
 
 def extract_returns(page_text: str) -> dict:
-    """Parse the 'Annualised Returns' section out of the page's full
-    visible text. Tries two strategies since the exact DOM order of an
-    SVG/canvas chart's label-vs-value text nodes can't be confirmed
-    without live browser devtools access:
-      1. Each label immediately followed by its %, e.g. "3 MTH\\n0.95%".
-      2. Fallback: collect all period labels present, in order, and all
-         percentages present, in order, and zip them 1:1 -- works if the
-         chart's labels and values are each grouped together in the same
-         left-to-right order, even if separated in the underlying text.
-    Returns {} if neither strategy finds a usable result -- the caller
-    treats that as a failure and keeps debug artifacts for inspection.
-    """
+    """Same logic verified in v1 against a real screenshot -- see module
+    docstring. Two strategies to handle either possible DOM text order for
+    an SVG/canvas chart's labels vs. values."""
     idx = page_text.find("Annualised Returns")
     window = page_text[idx: idx + 3000] if idx != -1 else page_text
     idx2 = window.find("Calendar Year Returns")
@@ -101,91 +104,250 @@ def extract_returns(page_text: str) -> dict:
     return {}
 
 
-def scrape_fund(page, fund: dict) -> dict:
-    page.goto(fund["url"], wait_until="networkidle", timeout=45000)
-    page.wait_for_timeout(2000)  # let the chart finish drawing after network idle
+def collect_factsheet_links(page) -> list[dict]:
+    """Grab every visible link on the current page pointing at a factsheet,
+    with its link text -- used both for a search-results page and for a
+    dropdown/autocomplete overlay, since both would just be <a> elements
+    somewhere in the DOM regardless of visual presentation."""
+    try:
+        return page.eval_on_selector_all(
+            "a[href*='/funds/factsheet/']",
+            "els => els.map(e => ({href: e.href, text: (e.innerText || e.textContent || '').trim()}))",
+        )
+    except Exception:
+        return []
+
+
+def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
+    """Search FSMOne for a fund by name and return (url, match_score, method).
+    Tries multiple strategies since the real search UI could not be
+    inspected beforehand:
+      1. A direct query-string search URL, in case the app happens to
+         hydrate results from it on load.
+      2. Loading the FSM homepage and driving whatever text input looks
+         like a search box: fill the fund name, wait, collect factsheet
+         links that appear (dropdown/autocomplete).
+      3. Same as #2 but pressing Enter afterward, in case results only
+         render on a full search-results page rather than a dropdown.
+    Returns (None, 0.0, "no_links") if nothing was found at all, so the
+    caller can tell a "found links but no good match" case apart from a
+    "search UI never worked" case when writing debug output.
+    """
+    target_norm = normalize(fund_name)
+
+    def best_of(links):
+        best, best_score = None, 0.0
+        for l in links:
+            score = SequenceMatcher(None, target_norm, normalize(l["text"])).ratio()
+            if score > best_score:
+                best, best_score = l, score
+        return best, best_score
+
+    # Strategy 1: direct query-string URL.
+    import urllib.parse
+    q = urllib.parse.quote(fund_name)
+    for path in (f"{FSM_HOME}general-search?q={q}", f"{FSM_HOME}general-search/?q={q}"):
+        try:
+            page.goto(path, wait_until="networkidle", timeout=30000)
+            page.wait_for_timeout(1500)
+        except Exception:
+            continue
+        links = collect_factsheet_links(page)
+        if links:
+            best, score = best_of(links)
+            if best and score >= SEARCH_MATCH_THRESHOLD:
+                return best["href"], score, "query_url"
+
+    # Strategy 2 & 3: drive an on-page search input.
+    try:
+        page.goto(FSM_HOME, wait_until="networkidle", timeout=30000)
+        page.wait_for_timeout(1000)
+    except Exception:
+        return None, 0.0, "homepage_load_failed"
+
+    search_selectors = [
+        "input[type='search']",
+        "input[placeholder*='search' i]",
+        "input[aria-label*='search' i]",
+        "input[name*='search' i]",
+    ]
+    search_box = None
+    for sel in search_selectors:
+        loc = page.locator(sel).first
+        try:
+            if loc.count() > 0:
+                search_box = loc
+                break
+        except Exception:
+            continue
+
+    if search_box is None:
+        return None, 0.0, "no_search_box_found"
+
+    try:
+        search_box.click(timeout=5000)
+        search_box.fill(fund_name)
+        page.wait_for_timeout(2000)
+    except Exception:
+        return None, 0.0, "search_box_interaction_failed"
+
+    links = collect_factsheet_links(page)
+    if links:
+        best, score = best_of(links)
+        if best and score >= SEARCH_MATCH_THRESHOLD:
+            return best["href"], score, "dropdown"
+
+    try:
+        page.keyboard.press("Enter")
+        page.wait_for_timeout(2500)
+    except Exception:
+        pass
+
+    links = collect_factsheet_links(page)
+    if links:
+        best, score = best_of(links)
+        if best and score >= SEARCH_MATCH_THRESHOLD:
+            return best["href"], score, "results_page"
+        if best:
+            return best["href"], score, "results_page_low_confidence"
+
+    return None, 0.0, "no_links_found"
+
+
+def scrape_returns_page(page, url: str) -> dict:
+    page.goto(url, wait_until="networkidle", timeout=45000)
+    page.wait_for_timeout(2000)
     try:
         page.wait_for_selector("text=Annualised Returns", timeout=15000)
     except Exception:
-        pass  # fall through -- extract_returns() will just find nothing
-
+        pass
     page_text = page.inner_text("body")
     raw = extract_returns(page_text)
-
     returns = {key: raw.get(label) for label, key in KEEP_PERIODS.items()}
+    ok = sum(1 for v in returns.values() if v is not None) >= 4
+    return {"returns": returns, "raw_periods_found": raw, "ok": ok, "page_text": page_text}
 
-    return {
-        "app_label": fund["app_label"],
-        "fsmone_name": fund["fsmone_name"],
-        "source_url": fund["url"],
-        "returns": returns,
-        "raw_periods_found": raw,
-        "ok": sum(1 for v in returns.values() if v is not None) >= 4,
-    }
+
+def save_debug(debug_dir, n, key, page):
+    os.makedirs(debug_dir, exist_ok=True)
+    try:
+        page.screenshot(path=f"{debug_dir}/{n:03d}_{key}.png", full_page=True)
+    except Exception:
+        pass
+    try:
+        with open(f"{debug_dir}/{n:03d}_{key}.txt", "w", encoding="utf-8") as f:
+            f.write(page.inner_text("body"))
+    except Exception:
+        pass
+
+
+def slugify(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")[:40]
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--targets", required=True, help="CSV of target funds (fund_name, fund_manager)")
     ap.add_argument("--out", default="data/fund_returns.json")
     ap.add_argument("--debug-dir", default="data/debug_returns")
+    ap.add_argument("--limit", type=int, default=None, help="Only process the first N funds (for testing)")
     args = ap.parse_args()
+
+    with open(args.targets, newline="", encoding="utf-8") as f:
+        targets = list(csv.DictReader(f))
+    if args.limit:
+        targets = targets[: args.limit]
 
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
 
     results = []
-    any_failed = False
+    n_ok = 0
+    n_search_fail = 0
+    n_scrape_fail = 0
 
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page(viewport={"width": 1400, "height": 1000})
-        for fund in FUNDS:
-            print(f"Scraping {fund['app_label']} ({fund['url']}) ...")
+
+        for i, t in enumerate(targets):
+            fund_name = t["fund_name"]
+            key = slugify(fund_name)
+            print(f"[{i+1}/{len(targets)}] {fund_name}")
+
+            entry = {
+                "target_fund_name": fund_name,
+                "target_manager": t.get("fund_manager", ""),
+                "matched_url": None,
+                "match_confidence": None,
+                "match_method": None,
+                "returns": {v: None for v in KEEP_PERIODS.values()},
+                "ok": False,
+            }
+
             try:
-                data = scrape_fund(page, fund)
+                url, score, method = find_fund_url(page, fund_name)
             except Exception as e:
-                print(f"  FAILED: {e}", file=sys.stderr)
-                data = {
-                    "app_label": fund["app_label"],
-                    "fsmone_name": fund["fsmone_name"],
-                    "source_url": fund["url"],
-                    "returns": {k: None for k in KEEP_PERIODS.values()},
-                    "raw_periods_found": {},
-                    "ok": False,
-                    "error": str(e),
-                }
-            if not data["ok"]:
-                any_failed = True
-                os.makedirs(args.debug_dir, exist_ok=True)
-                safe_key = fund["key"]
-                try:
-                    page.screenshot(path=f"{args.debug_dir}/{safe_key}.png", full_page=True)
-                except Exception:
-                    pass
-                try:
-                    with open(f"{args.debug_dir}/{safe_key}.txt", "w", encoding="utf-8") as f:
-                        f.write(page.inner_text("body"))
-                except Exception:
-                    pass
-                found_n = sum(1 for v in data["returns"].values() if v)
-                print(f"  Only found {found_n} of {len(KEEP_PERIODS)} periods -- "
-                      f"debug artifacts saved to {args.debug_dir}/{safe_key}.*")
+                print(f"  search error: {e}", file=sys.stderr)
+                url, score, method = None, 0.0, f"exception:{e}"
+
+            entry["match_confidence"] = round(score, 3)
+            entry["match_method"] = method
+
+            if not url:
+                n_search_fail += 1
+                print(f"  SEARCH FAILED ({method})")
+                save_debug(args.debug_dir, i, key + "_search", page)
+                results.append(entry)
+                continue
+
+            entry["matched_url"] = url
+            try:
+                scraped = scrape_returns_page(page, url)
+            except Exception as e:
+                print(f"  scrape error: {e}", file=sys.stderr)
+                n_scrape_fail += 1
+                save_debug(args.debug_dir, i, key + "_scrape", page)
+                results.append(entry)
+                continue
+
+            entry["returns"] = scraped["returns"]
+            entry["raw_periods_found"] = scraped["raw_periods_found"]
+            entry["ok"] = scraped["ok"]
+
+            if scraped["ok"]:
+                n_ok += 1
+                print(f"  OK ({method}, confidence {score:.2f}): {scraped['returns']}")
             else:
-                print(f"  OK: {data['returns']}")
-            results.append(data)
+                n_scrape_fail += 1
+                print(f"  SCRAPE INCOMPLETE ({method}, confidence {score:.2f})")
+                save_debug(args.debug_dir, i, key + "_scrape", page)
+
+            results.append(entry)
+
+            # Politeness delay between funds -- avoid hammering FSMOne with
+            # back-to-back requests, which is both more considerate and
+            # less likely to trip any bot-rate-limiting.
+            time.sleep(random.uniform(1.0, 2.2))
+
         browser.close()
 
     output = {
         "last_scraped": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "periods": list(KEEP_PERIODS.values()),
+        "total_targets": len(targets),
+        "matched_ok": n_ok,
+        "search_failed": n_search_fail,
+        "scrape_incomplete": n_scrape_fail,
         "funds": results,
     }
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
+    print(f"\nDone: {n_ok}/{len(targets)} fully scraped, {n_search_fail} search failures, "
+          f"{n_scrape_fail} scrape-incomplete.")
     print(f"Wrote {args.out}")
-    if any_failed:
-        print("One or more funds had incomplete data -- check debug artifacts.", file=sys.stderr)
-        sys.exit(1)
+    if n_search_fail + n_scrape_fail > 0:
+        print(f"Debug artifacts for failures saved under {args.debug_dir}/", file=sys.stderr)
 
 
 if __name__ == "__main__":

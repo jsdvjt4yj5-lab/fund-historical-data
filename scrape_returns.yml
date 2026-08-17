@@ -1,0 +1,52 @@
+name: Scrape fund returns
+
+on:
+  schedule:
+    - cron: '0 22 * * *'   # once a day, 6am SGT -- historical returns don't
+                            # move intraday the way prices do, so this runs
+                            # far less often than the price scraper.
+  workflow_dispatch: {}     # allows manual trigger from the Actions tab
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r requirements.txt
+
+      # Playwright needs its own browser binary downloaded separately from
+      # the pip package, plus OS-level dependencies for headless Chromium.
+      # --with-deps installs those apt packages too (works on GitHub-hosted
+      # ubuntu-latest runners, which have full root access, unlike some
+      # restricted sandboxes).
+      - run: playwright install --with-deps chromium
+
+      - run: python scrape_fund_returns.py --out data/fund_returns.json
+
+      # If any fund's returns couldn't be fully parsed, scrape_fund_returns.py
+      # exits non-zero and leaves a screenshot + raw page text per failing
+      # fund under data/debug_returns/. Upload those as a downloadable
+      # artifact (same pattern as the price scraper's debug HTML) instead of
+      # committing them into git history.
+      - name: Upload debug artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-returns
+          path: data/debug_returns/
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Commit updated data
+        if: success()
+        run: |
+          git config user.name "fund-price-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/fund_returns.json
+          git diff --quiet --cached || git commit -m "Update fund returns $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push

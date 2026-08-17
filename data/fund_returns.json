@@ -1,5 +1,5 @@
 {
-  "last_scraped": "2026-08-17T16:55:45+00:00",
+  "last_scraped": "2026-08-17T17:17:14+00:00",
   "periods": [
     "3mo",
     "6mo",
@@ -530,7 +530,7 @@
       "target_manager": "HSBC Life",
       "matched_url": null,
       "match_confidence": 0.0,
-      "match_method": "homepage_load_failed",
+      "match_method": "no_search_box_found",
       "returns": {
         "3mo": null,
         "6mo": null,

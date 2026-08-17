@@ -1,0 +1,65 @@
+{
+  "last_scraped": "2026-08-17T12:21:15+00:00",
+  "periods": [
+    "3mo",
+    "6mo",
+    "1yr",
+    "3yr",
+    "5yr",
+    "10yr"
+  ],
+  "funds": [
+    {
+      "app_label": "PIMCO Income Fund",
+      "fsmone_name": "PIMCO Income Fund Cl E Inc SGD-H",
+      "source_url": "https://secure.fundsupermart.com/fsm/funds/factsheet/ALZP06/PIMCO-Income-Fund-Cl-E-Inc-SGD-H",
+      "returns": {
+        "3mo": "0.95%",
+        "6mo": "-2.01%",
+        "1yr": "1.36%",
+        "3yr": "4.21%",
+        "5yr": "1.06%",
+        "10yr": "2.57%"
+      },
+      "raw_periods_found": {
+        "1 WK": "0.51%",
+        "1 MTH": "-0.18%",
+        "3 MTH": "0.95%",
+        "6 MTH": "-2.01%",
+        "YTD": "-1.00%",
+        "1 YR": "1.36%",
+        "2 YR": "2.90%",
+        "3 YR": "4.21%",
+        "5 YR": "1.06%",
+        "10 YR": "2.57%"
+      },
+      "ok": true
+    },
+    {
+      "app_label": "Franklin Income Fund",
+      "fsmone_name": "FTIF - Franklin Income A MDIS SGD-H1",
+      "source_url": "https://secure.fundsupermart.com/fsm/funds/factsheet/FTF020/FTIF-Franklin-Income-A-MDIS-SGD-H1",
+      "returns": {
+        "3mo": "2.46%",
+        "6mo": "2.55%",
+        "1yr": "9.16%",
+        "3yr": "7.26%",
+        "5yr": "3.45%",
+        "10yr": "3.82%"
+      },
+      "raw_periods_found": {
+        "1 WK": "0.47%",
+        "1 MTH": "2.31%",
+        "3 MTH": "2.46%",
+        "6 MTH": "2.55%",
+        "YTD": "5.70%",
+        "1 YR": "9.16%",
+        "2 YR": "6.64%",
+        "3 YR": "7.26%",
+        "5 YR": "3.45%",
+        "10 YR": "3.82%"
+      },
+      "ok": true
+    }
+  ]
+}

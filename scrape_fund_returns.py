@@ -193,21 +193,38 @@ def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
 
     dismiss_cookie_banner(page)
 
-    # Open the search input: click the magnifying-glass icon by its known
-    # fixed position, then confirm an input actually appeared rather than
-    # assuming the click worked. Try a couple of nearby coordinates too, in
-    # case the pixel estimate is slightly off, now that the cookie banner's
-    # page-wide backdrop (confirmed via a debug page-text dump to have been
-    # swallowing every click on the previous run) is out of the way.
-    icon_x, icon_y = SEARCH_ICON_XY
-    for dx, dy in ((0, 0), (0, -6), (0, 6), (-6, 0), (6, 0)):
+    # Open the search input. A real debug HTML dump (page.evaluate, not a
+    # screenshot guess) confirmed the exact element: an ng-zorro icon
+    # `<i class="anticon-search" nztype="search">` inside the header, and
+    # confirmed there is exactly ONE <input> anywhere on the page before
+    # interacting (an unrelated checkbox) -- proving the earlier
+    # coordinate-based page.mouse.click() attempts genuinely never
+    # triggered anything, whether from a slightly-off pixel guess or from
+    # clicking before Angular finished attaching its event listeners.
+    # Playwright's locator .click() is used instead of raw coordinates: it
+    # auto-waits for the element to be attached/visible/stable and retries
+    # within its timeout, which is a much better fit for an Angular SPA's
+    # hydration timing than a fixed sleep.
+    clicked = False
+    for sel in ("i.anticon-search", "i[nztype='search']", ".anticon-search"):
         try:
-            page.mouse.click(icon_x + dx, icon_y + dy)
-            page.wait_for_timeout(500)
+            icon = page.locator(sel).first
+            if icon.count() > 0:
+                icon.click(timeout=6000)
+                clicked = True
+                break
         except Exception:
             continue
-        if page.locator("input").count() > 0:
-            break
+
+    if not clicked:
+        # Fall back to the coordinate guess only if the real selector
+        # somehow isn't there (e.g. a markup change) -- better than nothing.
+        try:
+            page.mouse.click(*SEARCH_ICON_XY)
+        except Exception:
+            pass
+
+    page.wait_for_timeout(800)
 
     search_box = None
     # Prefer a purpose-named input if one shows up now that the icon's been

@@ -1,5 +1,5 @@
 {
-  "last_scraped": "2026-08-17T19:27:50+00:00",
+  "last_scraped": "2026-08-17T23:39:01+00:00",
   "periods": [
     "3mo",
     "6mo",
@@ -99,7 +99,7 @@
       "target_manager": "Amundi",
       "matched_url": null,
       "match_confidence": 0.0,
-      "match_method": "no_confident_match",
+      "match_method": "homepage_load_failed",
       "returns": {
         "3mo": null,
         "6mo": null,

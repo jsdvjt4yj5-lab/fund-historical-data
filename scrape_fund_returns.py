@@ -65,10 +65,19 @@ KEEP_PERIODS = {"3 MTH": "3mo", "6 MTH": "6mo", "1 YR": "1yr", "3 YR": "3yr", "5
 PCT_RE = re.compile(r"[-−]?\d+\.\d+%")
 FACTSHEET_HREF_RE = re.compile(r"/funds/factsheet/")
 
-SEARCH_MATCH_THRESHOLD = 0.45  # generous -- FSMOne's own naming style differs
+SEARCH_MATCH_THRESHOLD = 0.5   # generous -- FSMOne's own naming style differs
                                 # enough from the HSBC target list (abbreviations,
                                 # share class suffixes) that a strict threshold
                                 # would reject a lot of genuine matches.
+
+# Pixel position of the magnifying-glass search icon in FSM Global's sticky
+# header, at the 1400x1000 viewport this script launches with. Read off a
+# real debug screenshot from the first full-roster run (see
+# search_icon_zoom.png) -- there is no visible <input> on the homepage at
+# all, just this icon, which is why every "guess a search input selector"
+# strategy failed 100% of the time on the first run. Clicking here reveals
+# the actual input.
+SEARCH_ICON_XY = (1148, 123)
 
 
 def normalize(name: str) -> str:
@@ -120,18 +129,32 @@ def collect_factsheet_links(page) -> list[dict]:
 
 def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
     """Search FSMOne for a fund by name and return (url, match_score, method).
-    Tries multiple strategies since the real search UI could not be
-    inspected beforehand:
-      1. A direct query-string search URL, in case the app happens to
-         hydrate results from it on load.
-      2. Loading the FSM homepage and driving whatever text input looks
-         like a search box: fill the fund name, wait, collect factsheet
-         links that appear (dropdown/autocomplete).
-      3. Same as #2 but pressing Enter afterward, in case results only
-         render on a full search-results page rather than a dropdown.
-    Returns (None, 0.0, "no_links") if nothing was found at all, so the
-    caller can tell a "found links but no good match" case apart from a
-    "search UI never worked" case when writing debug output.
+
+    Rewritten after inspecting real debug screenshots from the first
+    full-roster run. Two things learned from those screenshots that changed
+    this function:
+
+      1. The `general-search?q=...` query-string "shortcut" used in v1 of
+         this function was a bug, not a working strategy: FSM Global is a
+         pure client-rendered SPA that does NOT read that query param at
+         all, so it silently rendered the plain homepage every time,
+         regardless of the fund searched for. collect_factsheet_links()
+         then picked up whatever fixed "Recommended / Trending" fund links
+         happened to be on that homepage, and the fuzzy matcher occasionally
+         scored one of those unrelated funds above threshold by coincidence
+         -- producing confident-looking but WRONG matches (e.g. five
+         different BlackRock sector funds all "matching" the same BlackRock
+         Gold fund page). This shortcut is removed entirely.
+      2. There is no visible <input> on the homepage at all -- only a
+         magnifying-glass icon in the header (no surrounding <form>/label
+         text visible in the rendered page, which is why every guessed
+         input selector found nothing). It has to be clicked first to
+         reveal the real search input. Its on-screen position is stable
+         (same fixed header on every load) at SEARCH_ICON_XY for the
+         1400x1000 viewport this script launches with.
+
+    Returns (None, 0.0, reason) if nothing usable was found, so the caller
+    can save debug output explaining why.
     """
     target_norm = normalize(fund_name)
 
@@ -143,43 +166,50 @@ def find_fund_url(page, fund_name: str) -> tuple[str | None, float, str]:
                 best, best_score = l, score
         return best, best_score
 
-    # Strategy 1: direct query-string URL.
-    import urllib.parse
-    q = urllib.parse.quote(fund_name)
-    for path in (f"{FSM_HOME}general-search?q={q}", f"{FSM_HOME}general-search/?q={q}"):
-        try:
-            page.goto(path, wait_until="networkidle", timeout=30000)
-            page.wait_for_timeout(1500)
-        except Exception:
-            continue
-        links = collect_factsheet_links(page)
-        if links:
-            best, score = best_of(links)
-            if best and score >= SEARCH_MATCH_THRESHOLD:
-                return best["href"], score, "query_url"
-
-    # Strategy 2 & 3: drive an on-page search input.
     try:
         page.goto(FSM_HOME, wait_until="networkidle", timeout=30000)
         page.wait_for_timeout(1000)
     except Exception:
         return None, 0.0, "homepage_load_failed"
 
-    search_selectors = [
+    # Open the search input: click the magnifying-glass icon by its known
+    # fixed position, then confirm an input actually appeared rather than
+    # assuming the click worked.
+    try:
+        page.mouse.click(*SEARCH_ICON_XY)
+        page.wait_for_timeout(600)
+    except Exception:
+        return None, 0.0, "search_icon_click_failed"
+
+    search_box = None
+    # Prefer a purpose-named input if one shows up now that the icon's been
+    # clicked; otherwise fall back to "whatever visible text input just
+    # appeared", since the exact markup couldn't be inspected beforehand.
+    named_selectors = [
         "input[type='search']",
         "input[placeholder*='search' i]",
         "input[aria-label*='search' i]",
         "input[name*='search' i]",
     ]
-    search_box = None
-    for sel in search_selectors:
+    for sel in named_selectors:
         loc = page.locator(sel).first
         try:
-            if loc.count() > 0:
+            if loc.count() > 0 and loc.is_visible():
                 search_box = loc
                 break
         except Exception:
             continue
+
+    if search_box is None:
+        try:
+            candidates = page.locator("input[type='text'], input:not([type])")
+            for idx in range(min(candidates.count(), 8)):
+                cand = candidates.nth(idx)
+                if cand.is_visible():
+                    search_box = cand
+                    break
+        except Exception:
+            pass
 
     if search_box is None:
         return None, 0.0, "no_search_box_found"

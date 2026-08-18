@@ -1,5 +1,5 @@
 {
-  "last_scraped": "2026-08-18T05:23:09+00:00",
+  "last_scraped": "2026-08-18T05:34:03+00:00",
   "source": "hsbc_ilp_center",
   "note": "Scraped fund-by-fund from HSBC Life Singapore's ILP Fund Center (fundprices.insurance.hsbc.com.sg) by exact fund id. The 'Annualised returns' block exposes 1yr/3yr/5yr/10yr only, so 3mo/6mo are always null.",
   "periods": [

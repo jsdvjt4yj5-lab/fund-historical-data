@@ -2,9 +2,12 @@ name: Scrape fund returns
 
 on:
   schedule:
-    - cron: '0 22 * * *'   # once a day, 6am SGT -- historical returns don't
-                            # move intraday the way prices do, so this runs
-                            # far less often than the price scraper.
+    # Every ~10 days, 6am SGT. Cron has no native "every N days" step for
+    # day-of-month (months aren't evenly divisible by 10), so this runs on
+    # the 1st/11th/21st of each month instead -- gaps land between 8 and 11
+    # days depending on the month, close enough given historical returns
+    # don't move fast enough to need finer granularity than that.
+    - cron: '0 22 1,11,21 * *'
   workflow_dispatch: {}     # allows manual trigger from the Actions tab
 
 jobs:

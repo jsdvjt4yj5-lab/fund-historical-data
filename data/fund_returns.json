@@ -1,5 +1,5 @@
 {
-  "last_scraped": "2026-08-18T05:34:03+00:00",
+  "last_scraped": "2026-08-18T08:35:11+00:00",
   "source": "hsbc_ilp_center",
   "note": "Scraped fund-by-fund from HSBC Life Singapore's ILP Fund Center (fundprices.insurance.hsbc.com.sg) by exact fund id. The 'Annualised returns' block exposes 1yr/3yr/5yr/10yr only, so 3mo/6mo are always null.",
   "periods": [
@@ -10,9 +10,9 @@
     "5yr",
     "10yr"
   ],
-  "total_targets": 70,
-  "matched_ok": 70,
-  "failed": 0,
+  "total_targets": 76,
+  "matched_ok": 75,
+  "failed": 1,
   "funds": [
     {
       "target_fund_name": "AB FCP I - Emerging Markets Debt Portfolio A2 SGD H Acc",
@@ -23,21 +23,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 5.27,
-        "3yr": 8.17,
-        "5yr": 0.42,
-        "10yr": 1.54
+        "1yr": 5.04,
+        "3yr": 8.56,
+        "5yr": 0.36,
+        "10yr": 1.43
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 22.77,
+        "nav": 22.72,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "5 - Speculative",
         "isin": "LU0592506637",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -50,21 +51,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 1.47,
-        "3yr": 5.48,
-        "5yr": 1.39,
-        "10yr": 2.49
+        "1yr": 1.34,
+        "3yr": 5.68,
+        "5yr": 1.41,
+        "10yr": 2.45
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 24.19,
+        "nav": 24.16,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "4 - Adventurous",
         "isin": "LU0592507445",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -77,21 +79,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 9.67,
-        "3yr": 13.85,
-        "5yr": 8.25,
-        "10yr": 9.45
+        "1yr": 9.02,
+        "3yr": 14.4,
+        "5yr": 8.19,
+        "10yr": 9.4
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 55.7,
+        "nav": 55.37,
         "nav_currency": "USD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "LU0861579265",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -104,21 +107,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 6.42,
-        "3yr": 6.57,
-        "5yr": 1.78,
-        "10yr": 10.84
+        "1yr": 6.08,
+        "3yr": 7.58,
+        "5yr": 1.83,
+        "10yr": 10.81
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 62.31,
+        "nav": 62.11,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "LU0592508096",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -146,6 +150,7 @@
         "isin": "LU1720051017",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -173,8 +178,10 @@
         "isin": "LU0943347566",
         "asset_class": "Allocation",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "7.69%"
+        "twelve_month_yield": "7.69%",
+        "ex_dividend_date": "2026-08-17"
       }
     },
     {
@@ -201,6 +208,7 @@
         "isin": "LU0568621618",
         "asset_class": "Money Market",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -213,21 +221,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -1.1,
-        "3yr": 2.04,
-        "5yr": -2.19,
-        "10yr": 0.29
+        "1yr": -1.28,
+        "3yr": 2.23,
+        "5yr": -2.22,
+        "10yr": 0.27
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 57.3,
+        "nav": 57.2,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "2 - Cautious",
         "isin": "LU1883849512",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -240,21 +249,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 1.66,
-        "3yr": 4.32,
-        "5yr": -0.66,
-        "10yr": 1.34
+        "1yr": 1.49,
+        "3yr": 4.5,
+        "5yr": -0.69,
+        "10yr": 1.33
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 110.85,
+        "nav": 110.66,
         "nav_currency": "USD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "2 - Cautious",
         "isin": "LU1883849603",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -267,21 +277,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 12.08,
-        "3yr": 15.93,
-        "5yr": 9.45,
-        "10yr": 13.44
+        "1yr": 10.92,
+        "3yr": 16.36,
+        "5yr": 9.32,
+        "10yr": 13.33
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 754.72,
+        "nav": 746.94,
         "nav_currency": "USD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "LU1883854355",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -294,21 +305,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 0.26,
-        "3yr": 5.18,
-        "5yr": 1.83,
-        "10yr": 2.38
+        "1yr": 0.13,
+        "3yr": 5.46,
+        "5yr": 1.72,
+        "10yr": 2.37
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 1.8337,
+        "nav": 1.832,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "2 - Cautious",
         "isin": "SG9999003412",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -321,21 +333,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 1.35,
-        "3yr": 3.39,
-        "5yr": 1.96,
+        "1yr": 1.34,
+        "3yr": 3.4,
+        "5yr": 1.94,
         "10yr": 1.96
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 2.2024,
+        "nav": 2.2021,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "1 - Very Cautious",
         "isin": "SG9999001382",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -348,21 +361,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 25.91,
-        "3yr": 12.06,
-        "5yr": 7.82,
-        "10yr": 7.11
+        "1yr": 26.06,
+        "3yr": 13.0,
+        "5yr": 7.96,
+        "10yr": 7.09
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 22.6,
+        "nav": 22.64,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "LU0889566641",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -375,23 +389,25 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 34.5,
-        "3yr": 25.32,
-        "5yr": 15.19,
-        "10yr": 10.32
+        "1yr": 35.66,
+        "3yr": 26.36,
+        "5yr": 15.69,
+        "10yr": 10.43
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 2.519,
+        "nav": 2.538,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "SG9999000343",
         "asset_class": "Equity",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Quarterly",
-        "twelve_month_yield": "4.04%"
+        "twelve_month_yield": "4.04%",
+        "ex_dividend_date": "2026-07-01"
       }
     },
     {
@@ -403,21 +419,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -0.01,
-        "3yr": 4.72,
-        "5yr": 1.23,
-        "10yr": 1.6
+        "1yr": -1.04,
+        "3yr": 4.66,
+        "5yr": 0.95,
+        "10yr": 1.49
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 1.4412,
+        "nav": 1.428,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "2 - Cautious",
         "isin": "SG9999006530",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -430,21 +447,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 15.34,
-        "3yr": 13.57,
-        "5yr": 6.19,
-        "10yr": 8.05
+        "1yr": 14.56,
+        "3yr": 13.58,
+        "5yr": 6.11,
+        "10yr": 8.04
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 2.805,
+        "nav": 2.794,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "SG9999007520",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -457,21 +475,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 11.78,
-        "3yr": 10.43,
-        "5yr": 4.01,
-        "10yr": 5.89
+        "1yr": 11.09,
+        "3yr": 10.49,
+        "5yr": 3.91,
+        "10yr": 5.86
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 2.202,
+        "nav": 2.193,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "SG9999007512",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -484,21 +503,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 7.66,
-        "3yr": 7.27,
-        "5yr": 1.8,
-        "10yr": 3.6
+        "1yr": 7.21,
+        "3yr": 7.35,
+        "5yr": 1.73,
+        "10yr": 3.58
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 1.686,
+        "nav": 1.68,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "2 - Cautious",
         "isin": "SG9999007769",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -526,6 +546,7 @@
         "isin": "LU0270814014",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -538,23 +559,25 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 25.27,
-        "3yr": 14.18,
-        "5yr": 4.2,
-        "10yr": 4.22
+        "1yr": 25.81,
+        "3yr": 14.67,
+        "5yr": 4.35,
+        "10yr": 4.24
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 1.015,
+        "nav": 1.017,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "2 - Cautious",
         "isin": "SG9999009757",
         "asset_class": "Allocation",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "6.19%"
+        "twelve_month_yield": "6.19%",
+        "ex_dividend_date": "2026-08-03"
       }
     },
     {
@@ -581,6 +604,7 @@
         "isin": "LU0225283273",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -608,8 +632,10 @@
         "isin": "LU0955648018",
         "asset_class": "Equity",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "6.40%"
+        "twelve_month_yield": "6.40%",
+        "ex_dividend_date": "2026-07-30"
       }
     },
     {
@@ -636,8 +662,10 @@
         "isin": "LU1130305938",
         "asset_class": "Equity",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "6.49%"
+        "twelve_month_yield": "6.49%",
+        "ex_dividend_date": "2026-07-30"
       }
     },
     {
@@ -649,21 +677,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 44.95,
-        "3yr": 21.67,
-        "5yr": 7.15,
+        "1yr": 44.5,
+        "3yr": 22.05,
+        "5yr": 7.3,
         "10yr": 10.33
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 2.154,
+        "nav": 2.156,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "5 - Speculative",
         "isin": "SG9999006852",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -676,23 +705,25 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 38.32,
-        "3yr": 17.73,
-        "5yr": 4.52,
-        "10yr": 9.3
+        "1yr": 39.42,
+        "3yr": 18.48,
+        "5yr": 4.8,
+        "10yr": 9.37
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 4.587,
+        "nav": 4.617,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "SG9999000327",
         "asset_class": "Equity",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Quarterly",
-        "twelve_month_yield": "3.47%"
+        "twelve_month_yield": "3.47%",
+        "ex_dividend_date": "2026-07-01"
       }
     },
     {
@@ -719,8 +750,10 @@
         "isin": "LU2066015582",
         "asset_class": "Fixed Income",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "3.56%"
+        "twelve_month_yield": "3.56%",
+        "ex_dividend_date": "2026-08-19"
       }
     },
     {
@@ -747,6 +780,7 @@
         "isin": "IE00BYTNYN87",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -774,6 +808,7 @@
         "isin": "LU0663513272",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -786,23 +821,25 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -0.64,
-        "3yr": 3.26,
-        "5yr": -1.9,
+        "1yr": -0.55,
+        "3yr": 3.37,
+        "5yr": -1.97,
         "10yr": null
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 80.421,
+        "nav": 80.296,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "2 - Cautious",
         "isin": "IE00BM8DBS97",
         "asset_class": "Fixed Income",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Quarterly",
-        "twelve_month_yield": "3.54%"
+        "twelve_month_yield": "3.54%",
+        "ex_dividend_date": "2026-06-30"
       }
     },
     {
@@ -814,23 +851,25 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 0.4,
-        "3yr": 4.14,
-        "5yr": 0.56,
-        "10yr": 1.97
+        "1yr": 0.39,
+        "3yr": 4.36,
+        "5yr": 0.59,
+        "10yr": 1.96
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 14.43,
+        "nav": 14.42,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "IE00BRJFZM13",
         "asset_class": "Fixed Income",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "6.83%"
+        "twelve_month_yield": "6.83%",
+        "ex_dividend_date": "2026-08-03"
       }
     },
     {
@@ -857,6 +896,7 @@
         "isin": "LU1623119135",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -884,8 +924,10 @@
         "isin": "LU0815074496",
         "asset_class": "Allocation",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "5.59%"
+        "twelve_month_yield": "5.59%",
+        "ex_dividend_date": "2026-08-12"
       }
     },
     {
@@ -912,8 +954,10 @@
         "isin": "LU0912757837",
         "asset_class": "Allocation",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "5.72%"
+        "twelve_month_yield": "5.72%",
+        "ex_dividend_date": "2026-08-12"
       }
     },
     {
@@ -940,6 +984,7 @@
         "isin": "LU0210527015",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -967,6 +1012,7 @@
         "isin": "LU0210526801",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -994,8 +1040,10 @@
         "isin": "LU2561745709",
         "asset_class": "Allocation",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "2.90%"
+        "twelve_month_yield": "2.90%",
+        "ex_dividend_date": "2026-07-31"
       }
     },
     {
@@ -1022,6 +1070,7 @@
         "isin": "SG9999003644",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1048,6 +1097,7 @@
         "risk_rating": "2 - Cautious",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1074,6 +1124,7 @@
         "risk_rating": "3 - Balanced",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1100,6 +1151,7 @@
         "risk_rating": "1 - Very Cautious",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1126,6 +1178,7 @@
         "risk_rating": "3 - Balanced",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1153,6 +1206,7 @@
         "isin": "SG9999003685",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1180,6 +1234,7 @@
         "isin": "SG9999003669",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1207,6 +1262,7 @@
         "isin": "SG9999003586",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1233,6 +1289,7 @@
         "risk_rating": "3 - Balanced",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1260,6 +1317,7 @@
         "isin": "SG9999003610",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1287,6 +1345,7 @@
         "isin": "SG9999003602",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1314,6 +1373,7 @@
         "isin": "SG9999003594",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1340,6 +1400,7 @@
         "risk_rating": "5 - Speculative",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1366,6 +1427,7 @@
         "risk_rating": "4 - Adventurous",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1393,6 +1455,7 @@
         "isin": "LU1272399756",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1420,8 +1483,10 @@
         "isin": "LU1674673691",
         "asset_class": "Equity",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Annually",
-        "twelve_month_yield": "0.33%"
+        "twelve_month_yield": "0.33%",
+        "ex_dividend_date": "2026-05-13"
       }
     },
     {
@@ -1448,8 +1513,10 @@
         "isin": "LU2584144385",
         "asset_class": "Equity",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "2.55%"
+        "twelve_month_yield": "2.55%",
+        "ex_dividend_date": "2026-07-31"
       }
     },
     {
@@ -1461,21 +1528,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 40.22,
-        "3yr": 23.16,
-        "5yr": 7.67,
-        "10yr": 8.91
+        "1yr": 40.88,
+        "3yr": 23.42,
+        "5yr": 8.14,
+        "10yr": 8.95
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 31.83,
+        "nav": 31.98,
         "nav_currency": "USD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "5 - Speculative",
         "isin": "LU0313355587",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1503,6 +1571,7 @@
         "isin": "LU0690374615",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1515,21 +1584,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 34.05,
-        "3yr": 28.91,
-        "5yr": 11.04,
-        "10yr": 20.23
+        "1yr": 35.13,
+        "3yr": 30.82,
+        "5yr": 11.56,
+        "10yr": 20.32
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 77.17,
+        "nav": 77.51,
         "nav_currency": "USD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "5 - Speculative",
         "isin": "LU0109392836",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1542,21 +1612,22 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -9.52,
-        "3yr": 2.37,
-        "5yr": 2.49,
-        "10yr": 5.74
+        "1yr": -10.45,
+        "3yr": 2.31,
+        "5yr": 2.31,
+        "10yr": 5.73
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 21.38,
+        "nav": 21.26,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "5 - Speculative",
         "isin": "LU0536402901",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1569,23 +1640,25 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 9.33,
-        "3yr": 7.0,
-        "5yr": 3.48,
-        "10yr": 4.35
+        "1yr": 8.64,
+        "3yr": 7.26,
+        "5yr": 3.38,
+        "10yr": 4.27
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 6.4,
+        "nav": 6.37,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "3 - Balanced",
         "isin": "LU0320765646",
         "asset_class": "Allocation",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "8.52%"
+        "twelve_month_yield": "8.52%",
+        "ex_dividend_date": "2026-08-03"
       }
     },
     {
@@ -1597,23 +1670,25 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 1.61,
-        "3yr": 1.96,
-        "5yr": -0.16,
-        "10yr": 1.78
+        "1yr": 1.73,
+        "3yr": 2.04,
+        "5yr": -0.31,
+        "10yr": 1.73
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 7.75,
+        "nav": 7.74,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "2 - Cautious",
         "isin": "LU0923116197",
         "asset_class": "Fixed Income",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "5.83%"
+        "twelve_month_yield": "5.83%",
+        "ex_dividend_date": "2026-08-03"
       }
     },
     {
@@ -1640,6 +1715,7 @@
         "isin": "LU1363072403",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1667,8 +1743,10 @@
         "isin": "SGXZ58547654",
         "asset_class": "Equity",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Semi-Annually",
-        "twelve_month_yield": "0.00%"
+        "twelve_month_yield": "0.00%",
+        "ex_dividend_date": "2024-06-28"
       }
     },
     {
@@ -1695,6 +1773,7 @@
         "isin": "SGXZ13719315",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1722,8 +1801,10 @@
         "isin": "SGXZ71589303",
         "asset_class": "Allocation",
         "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
         "distribution_frequency": "Monthly",
-        "twelve_month_yield": "5.85%"
+        "twelve_month_yield": "5.85%",
+        "ex_dividend_date": "2026-07-31"
       }
     },
     {
@@ -1750,6 +1831,7 @@
         "isin": "LU0056508442",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1777,6 +1859,7 @@
         "isin": "LU0330918003",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1804,6 +1887,7 @@
         "isin": "LU0122379950",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1831,6 +1915,7 @@
         "isin": "LU0368265764",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1858,6 +1943,7 @@
         "isin": "LU0368265418",
         "asset_class": "Equity",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1885,6 +1971,7 @@
         "isin": "LU0308772762",
         "asset_class": "Allocation",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     },
@@ -1897,21 +1984,196 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 1.4,
-        "3yr": 5.15,
-        "5yr": 1.95,
-        "10yr": 3.28
+        "1yr": 1.34,
+        "3yr": 5.31,
+        "5yr": 1.94,
+        "10yr": 3.25
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 139.47,
+        "nav": 139.39,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-08-14",
+        "nav_as_of": "2026-08-17",
         "risk_rating": "4 - Adventurous",
         "isin": "LU0982017856",
         "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "PIMCO GIS Income Fund Administrative SGD (Hedged) Income",
+      "target_manager": "PIMCO",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000P78C",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 1.26,
+        "3yr": 4.57,
+        "5yr": 1.4,
+        "10yr": 2.94
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 9.07,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "IE00B91RQ825",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "6.80%",
+        "ex_dividend_date": "2026-07-30"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Asia Bond S47M3HSGD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00001F9QE",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": -1.03,
+        "3yr": 2.76,
+        "5yr": -2.49,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 9.499,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "2 - Cautious",
+        "isin": "LU2585153823",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "3.02%",
+        "ex_dividend_date": "2026-07-31"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Indian Equity AD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=0P0000A4WU",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": -7.55,
+        "3yr": 3.77,
+        "5yr": 2.77,
+        "10yr": 6.25
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 371.777,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0066902890",
+        "asset_class": "Equity",
+        "share_class_type": "Distributing",
+        "dividend_type": "Distributing",
+        "distribution_frequency": "Annually",
+        "twelve_month_yield": "0.00%",
+        "ex_dividend_date": "2008-07-15"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Asian Growth",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG0705K",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 30.45,
+        "3yr": 19.65,
+        "5yr": 6.05,
+        "10yr": 6.79
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 3.3178,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SG9999003701",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Fortress Fund A",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG0705R",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 41.08,
+        "3yr": 28.35,
+        "5yr": 16.89,
+        "10yr": 8.76
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 9.4955,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SG9999003693",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Janus Henderson Horizon Discovering New Alpha Fund A2 HSGD Acc",
+      "target_manager": "Janus Henderson",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00001SMV3",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": null,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": false,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 119.61,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU3154198322",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "dividend_type": "Accumulating",
         "distribution_frequency": "N"
       }
     }

@@ -31,6 +31,12 @@ reads): same top-level keys and same per-fund `returns` object, plus an
 `extra` block (nav / isin / risk_rating / etc.) that index.html ignores
 but is handy to keep.
 
+Each page visit also yields the fund's current NAV, so this scraper writes
+a second file, data/fund_prices.json, in the schema index.html's Fund
+Tracker table expects -- no separate price-scraping pass needed, and no
+fuzzy name-matching risk the way the old Maybank-based Fund-tracker feed
+had.
+
 Usage:
     playwright install --with-deps chromium      # once, before first run
     python scrape_ilp_returns.py --ids fund_ids.csv --out data/fund_returns.json
@@ -151,9 +157,35 @@ def extract_extra(text):
             extra["share_class_type"] = token
             break
 
-    # Distribution info (only for distributing funds)
-    extra["distribution_frequency"] = first(r"Distribution frequency\s*\n\s*([A-Za-z\-]+)", text)
-    extra["twelve_month_yield"] = first(r"12-month yield\s*\n\s*([\d.]+%)", text)
+    # Dividend block -- only present (with real values) for distributing
+    # funds; accumulating funds either omit it or show "- No value" for
+    # each field, which is treated the same as missing.
+    #   Dividend type          Distributing
+    #   Distribution frequency Monthly
+    #   12-month yield         6.80%
+    #   Ex-dividend date       30 Jul 2026
+    dtype = first(r"Dividend type\s*\n\s*([A-Za-z]+|-\s*\n?\s*No value)", text)
+    if dtype and not dtype.startswith("-"):
+        extra["dividend_type"] = dtype
+
+    freq = first(r"Distribution frequency\s*\n\s*([A-Za-z\-]+|-\s*\n?\s*No value)", text)
+    if freq and not freq.startswith("-"):
+        extra["distribution_frequency"] = freq
+
+    yld = first(r"12-month yield\s*\n\s*([\d.]+%|-\s*\n?\s*No value)", text)
+    if yld and not yld.startswith("-"):
+        extra["twelve_month_yield"] = yld
+
+    raw_ex_div = first(r"Ex-dividend date\s*\n\s*(\d{1,2}\s+[A-Za-z]{3}\s+\d{4}|-\s*\n?\s*No value)", text)
+    if raw_ex_div and not raw_ex_div.startswith("-"):
+        for fmt in ("%d %b %Y", "%d %B %Y"):
+            try:
+                extra["ex_dividend_date"] = datetime.strptime(raw_ex_div, fmt).strftime("%Y-%m-%d")
+                break
+            except ValueError:
+                continue
+        else:
+            extra["ex_dividend_date"] = raw_ex_div
 
     # Drop empty keys to keep the file tidy
     return {k: v for k, v in extra.items() if v is not None}
@@ -204,6 +236,10 @@ def main():
     ap.add_argument("--ids", default="fund_ids.csv",
                     help="CSV with columns: fund_id, fund_name, fund_manager")
     ap.add_argument("--out", default="data/fund_returns.json")
+    ap.add_argument("--prices-out", default="data/fund_prices.json",
+                    help="Fund-Tracker-table-compatible price file, built from the same "
+                         "NAV/currency/date already pulled off each fund's page -- no "
+                         "extra requests, just a second write of the same scrape.")
     ap.add_argument("--debug-dir", default="data/debug_returns")
     ap.add_argument("--limit", type=int, default=None, help="Only process first N (testing)")
     args = ap.parse_args()
@@ -269,8 +305,10 @@ def main():
 
         browser.close()
 
+    last_scraped_iso = datetime.now(timezone.utc).isoformat(timespec="seconds")
+
     output = {
-        "last_scraped": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "last_scraped": last_scraped_iso,
         "source": "hsbc_ilp_center",
         "note": ("Scraped fund-by-fund from HSBC Life Singapore's ILP Fund Center "
                  "(fundprices.insurance.hsbc.com.sg) by exact fund id. The "
@@ -285,7 +323,54 @@ def main():
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
+    # ---- Fund Tracker price table ----
+    # Same page fetch as above, just reshaped into the schema index.html's
+    # Fund Tracker table expects (matched_fund_name / currency / price /
+    # price_date / match_confidence / needs_review, plus an `unmatched`
+    # list for funds whose NAV wasn't found). Since every fund here is
+    # visited by its own exact id, there's no fuzzy matching at all --
+    # match_confidence is always 1.0 and needs_review always false for any
+    # fund that returned a NAV.
+    priced, unpriced = [], []
+    for r in results:
+        nav = r.get("extra", {}).get("nav")
+        if r["ok"] and nav is not None:
+            priced.append({
+                "target_fund_name": r["target_fund_name"],
+                "matched_fund_name": r["target_fund_name"],
+                "manager": r["target_manager"],
+                "target_manager": r["target_manager"],
+                "currency": r["extra"].get("nav_currency"),
+                "price": nav,
+                "price_date": r["extra"].get("nav_as_of"),
+                "match_confidence": 1.0,
+                "needs_review": False,
+                "source_url": r["matched_url"],
+            })
+        else:
+            unpriced.append({
+                "target_fund_name": r["target_fund_name"],
+                "target_manager": r["target_manager"],
+            })
+
+    prices_output = {
+        "last_scraped": last_scraped_iso,
+        "source": "hsbc_ilp_center",
+        "note": ("Prices are the NAV shown on each fund's HSBC Life ILP Fund "
+                 "Center page, read at the same time as the returns scrape. "
+                 "Matched by exact fund id -- no fuzzy matching, so "
+                 "match_confidence is always 1.0."),
+        "matched_count": len(priced),
+        "unmatched_count": len(unpriced),
+        "funds": priced,
+        "unmatched": unpriced,
+    }
+    os.makedirs(os.path.dirname(args.prices_out) or ".", exist_ok=True)
+    with open(args.prices_out, "w", encoding="utf-8") as f:
+        json.dump(prices_output, f, indent=2, ensure_ascii=False)
+
     print(f"\nDone: {n_ok}/{len(results)} scraped OK, {n_fail} failed. Wrote {args.out}")
+    print(f"Prices: {len(priced)} matched, {len(unpriced)} unmatched. Wrote {args.prices_out}")
     if n_fail:
         print(f"Debug artifacts for failures under {args.debug_dir}/", file=sys.stderr)
 

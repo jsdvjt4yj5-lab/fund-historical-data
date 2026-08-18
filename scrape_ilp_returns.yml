@@ -1,0 +1,95 @@
+name: Scrape ILP fund returns
+
+on:
+  schedule:
+    # Every ~10 days at 6am SGT (22:00 UTC the day before). Cron can't do a
+    # true "every 10 days", so this runs on the 1st / 11th / 21st of each
+    # month -- gaps land between 8 and 11 days, close enough for annualised
+    # returns that barely move day to day.
+    - cron: '0 22 1,11,21 * *'
+  workflow_dispatch:        # lets you trigger it by hand from the Actions tab
+    inputs:
+      limit:
+        description: 'Only scrape the first N funds (leave blank for all 70). Use e.g. 3 for a quick smoke test.'
+        required: false
+        default: ''
+
+# Give the built-in GITHUB_TOKEN permission to push the updated data file
+# back to the repo. (You can also enable this globally under
+# Settings -> Actions -> General -> Workflow permissions -> Read and write.)
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30   # safety net for the whole job, not just the install step
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r requirements.txt
+
+      # Playwright needs its browser binary + OS deps installed separately
+      # from the pip package. GitHub-hosted ubuntu runners have full root,
+      # so --with-deps works here.
+      #
+      # DEBIAN_FRONTEND=noninteractive stops apt-get from blocking forever
+      # on a debconf prompt (e.g. tzdata) it has no console to answer --
+      # the classic cause of this step looking "stuck" with no error and
+      # no further output. timeout-minutes fails the step outright after
+      # 8 minutes instead of hanging for the runner's full 6-hour limit if
+      # something like that still happens.
+      - name: Install Playwright browser + OS deps
+        timeout-minutes: 8
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: playwright install --with-deps chromium
+
+      # Visit each fund's exact ILP Fund Center page by id and read its
+      # annualised returns. No search, no fuzzy matching.
+      # On a manual run you can pass a `limit` (e.g. 3) for a quick smoke
+      # test; the scheduled runs leave it blank and scrape all 70.
+      - name: Scrape ILP fund returns
+        run: |
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            python scrape_ilp_returns.py --ids fund_ids.csv --out data/fund_returns.json --limit ${{ github.event.inputs.limit }}
+          else
+            python scrape_ilp_returns.py --ids fund_ids.csv --out data/fund_returns.json
+          fi
+
+      # If any fund page failed to render, its screenshot + raw text is under
+      # data/debug_returns/ -- upload it as a downloadable artifact instead of
+      # committing debug files into git.
+      - name: Upload debug artifacts (any fund failures)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-returns
+          path: data/debug_returns/
+          if-no-files-found: ignore
+          retention-days: 7
+
+      # data/fund_prices.json is written by the same script run above (the
+      # NAV comes off the same page fetch as the returns, no extra scrape) --
+      # commit it alongside fund_returns.json so the Fund Tracker table and
+      # the returns cards always update together.
+      - name: Commit updated data
+        if: always()
+        run: |
+          git config user.name "fund-price-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/fund_returns.json data/fund_prices.json
+          git diff --quiet --cached || git commit -m "Update ILP fund returns + prices $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+          # The branch can move between checkout and here (e.g. a web-UI edit
+          # while the job runs), which rejects a plain push as non-fast-forward.
+          # Rebase onto latest main and retry a couple of times before giving up.
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push attempt $attempt failed, retrying..."
+            sleep 5
+          done

@@ -1,35 +1,40 @@
 {
-  "generated_at": "2026-08-17T22:54:46.934728+00:00",
+  "generated_at": "2026-08-18T02:12:48.084916+00:00",
   "source": "hsbc_pdf",
-  "total": 12,
-  "matched_ok": 8,
+  "total": 10,
+  "matched_ok": 9,
   "funds": [
-    {
-      "target_fund_name": "Franklin Income Fund A(Mdis)SGD-H1",
-      "matched_url": "https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/funds/ilpfund/franklin/us-income-fund/factsheet.pdf",
-      "match_confidence": 1.0,
-      "match_method": "hardcoded_pdf",
-      "returns": null,
-      "ok": false,
-      "error": "extraction_failed_type_B"
-    },
     {
       "target_fund_name": "Franklin Technology Fund A (Acc) USD",
       "matched_url": "https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/funds/ilpfund/franklin/technology-fund/factsheet/franklin-technology-ffs-sgdusd.pdf",
       "match_confidence": 1.0,
-      "match_method": "hardcoded_pdf",
-      "returns": null,
-      "ok": false,
-      "error": "extraction_failed_type_B"
+      "match_method": "hardcoded_pdf_type_D",
+      "returns": {
+        "3mo": 26.7,
+        "6mo": null,
+        "1yr": 15.31,
+        "3yr": 25.28,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": true,
+      "error": null
     },
     {
       "target_fund_name": "BlackRock Global Funds - Global Allocation Fund A2 SGD Hedged",
-      "matched_url": "https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/funds/ilpfund/blackrock/global-allocation-fund/fund-summary/bgf-globalallocation-fs.pdf",
+      "matched_url": "https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/funds/ilpfund/blackrock/global-allocations-fund/fund-summary/bgf-globalallocation-fs.pdf",
       "match_confidence": 1.0,
-      "match_method": "hardcoded_pdf",
-      "returns": null,
-      "ok": false,
-      "error": "fetch_failed: 404 Client Error: Not Found for url: https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/funds/ilpfund/blackrock/global-allocation-fund/fund-summary/bgf-globalallocation-fs.pdf"
+      "match_method": "hardcoded_pdf_type_A",
+      "returns": {
+        "3mo": 2.92,
+        "6mo": 6.24,
+        "1yr": 6.74,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": true,
+      "error": null
     },
     {
       "target_fund_name": "BlackRock Global Funds - World Gold Fund A2 SGD Hedged",
@@ -37,12 +42,12 @@
       "match_confidence": 1.0,
       "match_method": "hardcoded_pdf_type_A",
       "returns": {
-        "3mo": 3.0,
-        "6mo": 6.0,
-        "1yr": 1.0,
-        "3yr": 3.0,
-        "5yr": 5.0,
-        "10yr": 10.0
+        "3mo": -8.36,
+        "6mo": 2.43,
+        "1yr": 7.45,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
       },
       "ok": true,
       "error": null
@@ -64,26 +69,17 @@
       "error": null
     },
     {
-      "target_fund_name": "HSBC Global Investment Funds - Asia Pacific ex Japan Equity High Dividend S48M2SGD",
-      "matched_url": "https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/funds/ilpfund/hgif/asiapac-exjap-hidiv/factsheet/hgif-asiapac-exjap-hidiv-ffs-sgdusd.pdf",
-      "match_confidence": 1.0,
-      "match_method": "hardcoded_pdf",
-      "returns": null,
-      "ok": false,
-      "error": "fetch_failed: 404 Client Error: Not Found for url: https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/funds/ilpfund/hgif/asiapac-exjap-hidiv/factsheet/hgif-asiapac-exjap-hidiv-ffs-sgdusd.pdf"
-    },
-    {
       "target_fund_name": "HSBC Global Investment Funds - Global Short Duration Bond ACHSGD",
       "matched_url": "https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/funds/ilpfund/hgif/global-short-duration-bond/fund-summary/hgif-globalshortduration-fs.pdf",
       "match_confidence": 1.0,
       "match_method": "hardcoded_pdf_type_A",
       "returns": {
-        "3mo": 3.0,
-        "6mo": 6.0,
-        "1yr": 1.0,
-        "3yr": 3.0,
-        "5yr": 5.0,
-        "10yr": 10.0
+        "3mo": -0.53,
+        "6mo": 0.56,
+        "1yr": -0.18,
+        "3yr": -0.77,
+        "5yr": 0.99,
+        "10yr": -3.22
       },
       "ok": true,
       "error": null
@@ -94,12 +90,12 @@
       "match_confidence": 1.0,
       "match_method": "hardcoded_pdf_type_A",
       "returns": {
-        "3mo": 3.0,
-        "6mo": 6.0,
-        "1yr": 1.0,
-        "3yr": 3.0,
-        "5yr": 5.0,
-        "10yr": 10.0
+        "3mo": -1.6,
+        "6mo": 2.74,
+        "1yr": -4.7,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
       },
       "ok": true,
       "error": null
@@ -126,12 +122,12 @@
       "match_confidence": 1.0,
       "match_method": "hardcoded_pdf_type_A",
       "returns": {
-        "3mo": 3.0,
-        "6mo": 6.0,
-        "1yr": 1.0,
-        "3yr": 3.0,
-        "5yr": 5.0,
-        "10yr": 10.0
+        "3mo": -0.95,
+        "6mo": -1.19,
+        "1yr": 3.22,
+        "3yr": null,
+        "5yr": null,
+        "10yr": null
       },
       "ok": true,
       "error": null
@@ -142,9 +138,9 @@
       "match_confidence": 1.0,
       "match_method": "hardcoded_pdf_type_C",
       "returns": {
-        "3mo": 3.0,
-        "6mo": 6.0,
-        "1yr": 1.0,
+        "3mo": -1.53,
+        "6mo": 2.92,
+        "1yr": 6.43,
         "3yr": -0.57,
         "5yr": -0.01,
         "10yr": 0.85
@@ -156,17 +152,10 @@
       "target_fund_name": "HSBC Life Singapore Equity Fund",
       "matched_url": "https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/funds/table-one/hsbc-insurance-singapore-equity-fund.pdf",
       "match_confidence": 1.0,
-      "match_method": "hardcoded_pdf_type_C",
-      "returns": {
-        "3mo": 3.0,
-        "6mo": 6.0,
-        "1yr": 1.0,
-        "3yr": 3.0,
-        "5yr": 5.0,
-        "10yr": 10.0
-      },
-      "ok": true,
-      "error": null
+      "match_method": "hardcoded_pdf",
+      "returns": null,
+      "ok": false,
+      "error": "extraction_failed_type_C"
     }
   ]
 }

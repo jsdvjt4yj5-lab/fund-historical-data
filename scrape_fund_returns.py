@@ -65,10 +65,26 @@ KEEP_PERIODS = {"3 MTH": "3mo", "6 MTH": "6mo", "1 YR": "1yr", "3 YR": "3yr", "5
 PCT_RE = re.compile(r"[-−]?\d+\.\d+%")
 FACTSHEET_HREF_RE = re.compile(r"/funds/factsheet/")
 
-SEARCH_MATCH_THRESHOLD = 0.5   # generous -- FSMOne's own naming style differs
-                                # enough from the HSBC target list (abbreviations,
-                                # share class suffixes) that a strict threshold
-                                # would reject a lot of genuine matches.
+SEARCH_MATCH_THRESHOLD = 0.75  # RAISED from 0.5 after a real production run
+                                # exposed a wrong-match regression at the old
+                                # threshold: near-identical fund-family names
+                                # (e.g. "BlackRock Global Funds - World Energy
+                                # Fund", "...World Healthscience Fund", "...World
+                                # Mining Fund", "...World Technology Fund") share
+                                # so much boilerplate text ("BlackRock Global
+                                # Funds", "Fund", "A2", "SGD Hedged") that plain
+                                # SequenceMatcher.ratio() scored them 0.59-0.66
+                                # against a completely different fund (BlackRock
+                                # World GOLD Fund) -- all four sector funds
+                                # silently "matched" to the same wrong URL.
+                                # Checked every match from that run against its
+                                # confidence score: every genuinely correct match
+                                # scored >=0.787, every wrong one scored <=0.659.
+                                # 0.75 sits in that gap. This trades away some
+                                # true-but-lower-scoring matches in exchange for
+                                # eliminating a whole class of confidently-wrong
+                                # ones -- the right tradeoff for financial data
+                                # a real client might see.
 
 # Pixel position of the magnifying-glass search icon in FSM Global's sticky
 # header, at the 1400x1000 viewport this script launches with. Read off a

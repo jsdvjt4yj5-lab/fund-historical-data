@@ -73,18 +73,28 @@ HSBC_DAM = "https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents"
 # suffix in the fund's own name / share class).
 # ---------------------------------------------------------------------------
 FUND_PDF_MAP = {
-    "Franklin Income Fund A(Mdis)SGD-H1": {
-        "url": f"{HSBC_DAM}/funds/ilpfund/franklin/us-income-fund/factsheet.pdf",
-        "type": "B",
-        "currency": "SGD",
-    },
+    # Franklin Income Fund deliberately left OUT of this map: its factsheet
+    # uses yet another table layout ("Cumulative Annualised" / 1 Mth, 3 Mths,
+    # YTD, 1 Yr, Since Incept, 3 Yrs, Since Incept -- no 6 Mth or 5 Yr column
+    # at all), confirmed by fetching and reading the actual PDF. FSMOne
+    # already finds this exact fund reliably on its own (0.79 confidence,
+    # full 6-period data) -- same as it did before this PDF pass existed --
+    # so there's no reason to build a fragile PDF path for it.
     "Franklin Technology Fund A (Acc) USD": {
+        # Same "Cumulative Annualised" layout as Franklin Income above, but
+        # unlike Franklin Income, FSMOne search reliably fails to find this
+        # one at all -- so a partial PDF result (missing 6mo/5yr/10yr, which
+        # this factsheet simply doesn't publish) is strictly better than the
+        # total blank FSMOne leaves it with.
         "url": f"{HSBC_DAM}/funds/ilpfund/franklin/technology-fund/factsheet/franklin-technology-ffs-sgdusd.pdf",
-        "type": "B",
+        "type": "D",
         "currency": "USD",
     },
     "BlackRock Global Funds - Global Allocation Fund A2 SGD Hedged": {
-        "url": f"{HSBC_DAM}/funds/ilpfund/blackrock/global-allocation-fund/fund-summary/bgf-globalallocation-fs.pdf",
+        # NOTE: slug is "global-allocations-fund" (plural) not "global-allocation-fund"
+        # -- verified by fetching both; the singular form 404s. Content confirmed to
+        # be "BlackRock Global Funds - Global Allocation Fund" A2 SGD Hedged / A2 USD.
+        "url": f"{HSBC_DAM}/funds/ilpfund/blackrock/global-allocations-fund/fund-summary/bgf-globalallocation-fs.pdf",
         "type": "A",
         "currency": "SGD",
     },
@@ -98,11 +108,12 @@ FUND_PDF_MAP = {
         "type": "A",
         "currency": "SGD",
     },
-    "HSBC Global Investment Funds - Asia Pacific ex Japan Equity High Dividend S48M2SGD": {
-        "url": f"{HSBC_DAM}/funds/ilpfund/hgif/asiapac-exjap-hidiv/factsheet/hgif-asiapac-exjap-hidiv-ffs-sgdusd.pdf",
-        "type": "B",
-        "currency": "SGD",
-    },
+    # HGIF Asia Pacific ex Japan Equity High Dividend deliberately left OUT:
+    # the guessed URL (hgif/asiapac-exjap-hidiv/...) 404s -- fetched and
+    # confirmed empty. Repeated targeted search couldn't turn up the real
+    # slug (this fund only appears cited inside omnibus reports, not as its
+    # own indexed factsheet). Falls through to FSMOne, same as before this
+    # PDF pass existed -- no regression, just no gain here.
     "HSBC Global Investment Funds - Global Short Duration Bond ACHSGD": {
         "url": f"{HSBC_DAM}/funds/ilpfund/hgif/global-short-duration-bond/fund-summary/hgif-globalshortduration-fs.pdf",
         "type": "A",
@@ -135,7 +146,19 @@ FUND_PDF_MAP = {
     },
 }
 
-NUM_RE = r"(?:N/A|n/a|-?\d{1,3}(?:,\d{3})*\.\d{1,2}%?|-?\d{1,3}(?:,\d{3})*%?)"
+# IMPORTANT: every real return value in these PDFs has a decimal point
+# (-1.60, 2.74, 45.88, ...) -- there is no legitimate case of a bare integer
+# return. This regex deliberately does NOT have a bare-integer fallback
+# branch, because a real production run exposed exactly that bug: with a
+# bare-integer branch, pdfplumber's extracted text joined the table's own
+# column-header labels ("3mths", "6mths", "1yr", "3yrs*", "5yrs*", "10yrs*")
+# onto a single line, and the regex happily matched the "3", "6", "1", "3",
+# "5", "10" digits IN THOSE LABELS as if they were 6 real data points --
+# producing a clean-looking but entirely fake {3mo:3.0, 6mo:6.0, 1yr:1.0,
+# 3yr:3.0, 5yr:5.0, 10yr:10.0} result that passed every validity check.
+# Requiring a decimal point makes that impossible: header labels never have
+# a decimal, real percentages always do.
+NUM_RE = r"(?:N/A|n/a|-?\d{1,3}(?:,\d{3})*\.\d{1,2}%?)"
 
 
 def _clean_num(tok):
@@ -286,7 +309,60 @@ def extract_type_c(text, currency):
     }
 
 
-EXTRACTORS = {"A": extract_type_a, "B": extract_type_b, "C": extract_type_c}
+def extract_type_d(text, currency):
+    """
+    Franklin Templeton's own "Fund Fact Sheet" layout (distinct from the
+    generic manager-factsheet TYPE_B assumed elsewhere -- confirmed by
+    fetching real Franklin Income / Franklin Technology PDFs, both of which
+    use this exact structure):
+
+      Performance in Share Class Currency (%)
+      Cumulative                    Annualised
+      1 Mth  3 Mths  YTD  1 Yr  Since Incept  3 Yrs  Since Incept
+      A (acc) USD   9.89  26.70  9.20  15.31  456.55  25.28  7.04
+
+    No 6-Month or 5-Year column exists in this layout at all -- those come
+    back as null, not a bug, just genuinely not published by this doc type.
+    The share class's own row is the first numeric row after the heading;
+    "After Sales Charge*" and "Benchmark in ..." rows (if present) follow it
+    and are ignored.
+    """
+    idx = text.find("Performance in Share Class Currency")
+    if idx == -1:
+        idx = text.find("Cumulative Annualised")
+    if idx == -1:
+        return None
+    section = text[idx: idx + 2000]
+    lines = section.split("\n")
+    candidate_rows = []
+    for line in lines:
+        toks = re.findall(NUM_RE, line)
+        numeric_toks = [t for t in toks if t.upper() == "N/A" or re.match(r"^-?\d", t)]
+        if len(numeric_toks) >= 6:
+            candidate_rows.append((line, numeric_toks))
+    if not candidate_rows:
+        return None
+
+    tag = currency
+    chosen = None
+    for line, toks in candidate_rows:
+        if tag in line and "Benchmark" not in line and "After Sales" not in line:
+            chosen = toks
+            break
+    if chosen is None:
+        chosen = candidate_rows[0][1]
+
+    # order: 1 Mth, 3 Mths, YTD, 1 Yr, Since Incept, 3 Yrs, Since Incept
+    vals = [_clean_num(t) for t in chosen[:7]]
+    while len(vals) < 7:
+        vals.append(None)
+    return {
+        "3mo": vals[1], "6mo": None, "1yr": vals[3],
+        "3yr": vals[5], "5yr": None, "10yr": None,
+    }
+
+
+EXTRACTORS = {"A": extract_type_a, "B": extract_type_b, "C": extract_type_c, "D": extract_type_d}
 
 
 def scrape_one(fund_name, cfg):

@@ -1,5 +1,5 @@
 {
-  "last_scraped": "2026-08-18T05:14:06+00:00",
+  "last_scraped": "2026-08-18T05:23:09+00:00",
   "source": "hsbc_ilp_center",
   "note": "Scraped fund-by-fund from HSBC Life Singapore's ILP Fund Center (fundprices.insurance.hsbc.com.sg) by exact fund id. The 'Annualised returns' block exposes 1yr/3yr/5yr/10yr only, so 3mo/6mo are always null.",
   "periods": [
@@ -10,8 +10,8 @@
     "5yr",
     "10yr"
   ],
-  "total_targets": 3,
-  "matched_ok": 3,
+  "total_targets": 70,
+  "matched_ok": 70,
   "failed": 0,
   "funds": [
     {
@@ -91,6 +91,1826 @@
         "risk_rating": "3 - Balanced",
         "isin": "LU0861579265",
         "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "AB SICAV I – Sustainable US Thematic Portfolio Class A SGDH Acc",
+      "target_manager": "AllianceBernstein",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000ME01",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 6.42,
+        "3yr": 6.57,
+        "5yr": 1.78,
+        "10yr": 10.84
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 62.31,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU0592508096",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Allianz Global Investors Fund - Allianz Global Artificial Intelligence AT H2 SGD",
+      "target_manager": "Allianz Global Investors",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000ZVQS",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 31.11,
+        "3yr": 20.64,
+        "5yr": 3.96,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 31.2104,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU1720051017",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Allianz Global Investors Fund - Allianz Income and Growth AMi3 (H2-SGD)",
+      "target_manager": "Allianz Global Investors",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000Q4B0",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 9.28,
+        "3yr": 9.65,
+        "5yr": 3.64,
+        "10yr": 7.06
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 7.7903,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "4 - Adventurous",
+        "isin": "LU0943347566",
+        "asset_class": "Allocation",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "7.69%"
+      }
+    },
+    {
+      "target_fund_name": "Amundi Funds - Cash USD A2 USD (C)",
+      "target_manager": "Amundi",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000MKK6",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 3.73,
+        "3yr": 4.52,
+        "5yr": 3.67,
+        "10yr": 2.55
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 130.96,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "1 - Very Cautious",
+        "isin": "LU0568621618",
+        "asset_class": "Money Market",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Amundi Funds - US Bond A2 SGD Hgd (C)",
+      "target_manager": "Amundi",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000R2NP",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": -1.1,
+        "3yr": 2.04,
+        "5yr": -2.19,
+        "10yr": 0.29
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 57.3,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "LU1883849512",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Amundi Funds - US Bond A2 USD (C)",
+      "target_manager": "Amundi",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000013QY5",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 1.66,
+        "3yr": 4.32,
+        "5yr": -0.66,
+        "10yr": 1.34
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 110.85,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "LU1883849603",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Amundi Funds - US Equity Fundamental Growth A USD C",
+      "target_manager": "Amundi",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000013QY7",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 12.08,
+        "3yr": 15.93,
+        "5yr": 9.45,
+        "10yr": 13.44
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 754.72,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU1883854355",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "United Singapore Bond Fund – Class A SGD Acc",
+      "target_manager": "UOBAM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG062UI",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 0.26,
+        "3yr": 5.18,
+        "5yr": 1.83,
+        "10yr": 2.38
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 1.8337,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "SG9999003412",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "United SGD Fund - Class A SGD Acc",
+      "target_manager": "UOBAM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG062HX",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 1.35,
+        "3yr": 3.39,
+        "5yr": 1.96,
+        "10yr": 1.96
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.2024,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "1 - Very Cautious",
+        "isin": "SG9999001382",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Templeton Shariah Global Equity Fund A(acc)SGD",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000PRDS",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 25.91,
+        "3yr": 12.06,
+        "5yr": 7.82,
+        "10yr": 7.11
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 22.6,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU0889566641",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Singapore Trust SGD A Dis",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG062S4",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 34.5,
+        "3yr": 25.32,
+        "5yr": 15.19,
+        "10yr": 10.32
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.519,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SG9999000343",
+        "asset_class": "Equity",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Quarterly",
+        "twelve_month_yield": "4.04%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Singapore Fixed Income Fund Class A Acc",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000005QI8",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": -0.01,
+        "3yr": 4.72,
+        "5yr": 1.23,
+        "10yr": 1.6
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 1.4412,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "SG9999006530",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Multi-Asset Revolution 70",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000MKAW",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 15.34,
+        "3yr": 13.57,
+        "5yr": 6.19,
+        "10yr": 8.05
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.805,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SG9999007520",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Multi-Asset Revolution 50",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000MKAV",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 11.78,
+        "3yr": 10.43,
+        "5yr": 4.01,
+        "10yr": 5.89
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.202,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SG9999007512",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Multi-Asset Revolution 30 A SGD Accumulation",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000MKAU",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 7.66,
+        "3yr": 7.27,
+        "5yr": 1.8,
+        "10yr": 3.6
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 1.686,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "SG9999007769",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Taiwanese Equity A Accumulation USD",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000000OYA",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 117.24,
+        "3yr": 46.22,
+        "5yr": 22.58,
+        "10yr": 19.37
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 100.6309,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0270814014",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Asian Income SGD X Dis",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000PIQI",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 25.27,
+        "3yr": 14.18,
+        "5yr": 4.2,
+        "10yr": 4.22
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 1.015,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "SG9999009757",
+        "asset_class": "Allocation",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "6.19%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Global Equity Alpha A Accumulation USD",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0GBR05ZSJ",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 15.44,
+        "3yr": 19.29,
+        "5yr": 9.98,
+        "10yr": 12.15
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 507.6745,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU0225283273",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Asian Dividend Maximiser A Distribution USD MF",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000QG2U",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 35.33,
+        "3yr": 21.61,
+        "5yr": 10.43,
+        "10yr": 8.49
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 95.4049,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU0955648018",
+        "asset_class": "Equity",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "6.40%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder International Selection Fund Asian Dividend Maximiser A Distribution SGD Hedged M",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000UQ0C",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 31.13,
+        "3yr": 18.5,
+        "5yr": 8.25,
+        "10yr": 6.92
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 86.4851,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU1130305938",
+        "asset_class": "Equity",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "6.49%"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Global Emerging Market Opportunities Fund",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000JQ3K",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 44.95,
+        "3yr": 21.67,
+        "5yr": 7.15,
+        "10yr": 10.33
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.154,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "5 - Speculative",
+        "isin": "SG9999006852",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Schroder Asian Growth Fund Class SGD A Distribution Units",
+      "target_manager": "Schroders",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG062RH",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 38.32,
+        "3yr": 17.73,
+        "5yr": 4.52,
+        "10yr": 9.3
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 4.587,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SG9999000327",
+        "asset_class": "Equity",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Quarterly",
+        "twelve_month_yield": "3.47%"
+      }
+    },
+    {
+      "target_fund_name": "Robeco Credit Income BxH SGD",
+      "target_manager": "Robeco",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000014C47",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 0.8,
+        "3yr": 4.82,
+        "5yr": 0.76,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 84.72,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU2066015582",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "3.56%"
+      }
+    },
+    {
+      "target_fund_name": "PineBridge Asia ex Japan Small Cap Equity Fund Class A5",
+      "target_manager": "PineBridge",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000XYM8",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 33.73,
+        "3yr": 15.47,
+        "5yr": 3.96,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 25.5111,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "IE00BYTNYN87",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Pictet-Premium Brands HP SGD",
+      "target_manager": "Pictet",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000MSZX",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 1.01,
+        "3yr": 1.44,
+        "5yr": 1.52,
+        "10yr": 8.85
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 520.21,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "4 - Adventurous",
+        "isin": "LU0663513272",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "PGIM Global Total Return Bond Fund SGD Hedged A Distribution (Q) Class",
+      "target_manager": "PGIM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000016F38",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": -0.64,
+        "3yr": 3.26,
+        "5yr": -1.9,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 80.421,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "IE00BM8DBS97",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Quarterly",
+        "twelve_month_yield": "3.54%"
+      }
+    },
+    {
+      "target_fund_name": "Neuberger Strategic Income Fund SGD A (Monthly) Distributing Class",
+      "target_manager": "Neuberger Berman",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000VEN2",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 0.4,
+        "3yr": 4.14,
+        "5yr": 0.56,
+        "10yr": 1.97
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 14.43,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "IE00BRJFZM13",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "6.83%"
+      }
+    },
+    {
+      "target_fund_name": "Mirova Funds - Mirova Global Sustainable Equity Fund R/A-NPF (USD)",
+      "target_manager": "Natixis",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000013QUF",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 9.93,
+        "3yr": 12.08,
+        "5yr": 3.99,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 226.16,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU1623119135",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "JPMorgan Investment Funds - Global Income Fund A (mth) USD (hedged)",
+      "target_manager": "JPMorgan",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000OS6X",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 12.78,
+        "3yr": 11.36,
+        "5yr": 4.78,
+        "10yr": 5.28
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 131.81,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU0815074496",
+        "asset_class": "Allocation",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "5.59%"
+      }
+    },
+    {
+      "target_fund_name": "JPMorgan Investment Funds - Global Income Fund A (mth) SGD (hedged)",
+      "target_manager": "JPMorgan",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000PTC5",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 9.7,
+        "3yr": 8.88,
+        "5yr": 3.07,
+        "10yr": 4.16
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 14.53,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU0912757837",
+        "asset_class": "Allocation",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "5.72%"
+      }
+    },
+    {
+      "target_fund_name": "JPMorgan Funds - India Fund A (acc) USD",
+      "target_manager": "JPMorgan",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0GBR05VW6",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": -12.15,
+        "3yr": 0.89,
+        "5yr": -0.03,
+        "10yr": 2.22
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 38.33,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0210527015",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "JPMorgan Funds - Greater China Fund A (acc) USD",
+      "target_manager": "JPMorgan",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0GBR05VWV",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 30.21,
+        "3yr": 18.81,
+        "5yr": 1.75,
+        "10yr": 9.73
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 68.54,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0210526801",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Portfolios - World Selection 5 AMFLXHSGD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00001GLNT",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 16.77,
+        "3yr": 14.77,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 130.182,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU2561745709",
+        "asset_class": "Allocation",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "2.90%"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Singapore Equity Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG070RH",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 29.31,
+        "3yr": 21.8,
+        "5yr": 13.08,
+        "10yr": 9.67
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 4.0591,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SG9999003644",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Singapore Bond Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000PGIM",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 0.07,
+        "3yr": 4.97,
+        "5yr": 1.62,
+        "10yr": 2.19
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 1.3901,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Singapore Balanced Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000HH52",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 18.9,
+        "3yr": 16.02,
+        "5yr": 8.87,
+        "10yr": 6.35
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.2234,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Short Duration Bond",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000Z3UK",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 1.01,
+        "3yr": 3.05,
+        "5yr": 1.61,
+        "10yr": 1.59
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 1.1758,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "1 - Very Cautious",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Shariah Global Equity",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000Z3UJ",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 26.02,
+        "3yr": 12.2,
+        "5yr": 7.9,
+        "10yr": 7.16
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 1.9502,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life India Opportunities Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG070J6",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": -8.37,
+        "3yr": 2.65,
+        "5yr": -1.33,
+        "10yr": 3.91
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.0203,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "5 - Speculative",
+        "isin": "SG9999003685",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Greater China Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG070J5",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 18.95,
+        "3yr": 13.87,
+        "5yr": -0.87,
+        "10yr": 6.64
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 1.9173,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "5 - Speculative",
+        "isin": "SG9999003669",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Global Secure Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG0705N",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 8.16,
+        "3yr": 7.84,
+        "5yr": 2.3,
+        "10yr": 4.1
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 1.7516,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "SG9999003586",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Global Perspective Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG070RE",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 12.87,
+        "3yr": 14.04,
+        "5yr": 5.39,
+        "10yr": 11.47
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.3613,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Global High Growth Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG0705L",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 17.04,
+        "3yr": 17.09,
+        "5yr": 8.68,
+        "10yr": 11.67
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 4.2552,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SG9999003610",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Global Growth Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG0705P",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 15.3,
+        "3yr": 13.51,
+        "5yr": 6.15,
+        "10yr": 8.01
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 3.0131,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SG9999003602",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Global Balanced Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0HKG0705O",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 11.68,
+        "3yr": 10.31,
+        "5yr": 3.9,
+        "10yr": 5.77
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.1453,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "SG9999003594",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Emerging Markets Opportunities Fund",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000OWOO",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 43.91,
+        "3yr": 21.05,
+        "5yr": 6.85,
+        "10yr": 10.04
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.8082,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "5 - Speculative",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Life Asian Balanced",
+      "target_manager": "HSBC Life",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000HH51",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 21.71,
+        "3yr": 12.1,
+        "5yr": 3.01,
+        "10yr": 5.93
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.4779,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "4 - Adventurous",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Global Short Duration Bond ACHSGD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000W6SH",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 0.54,
+        "3yr": 3.32,
+        "5yr": 1.03,
+        "10yr": 1.54
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 11.651,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "1 - Very Cautious",
+        "isin": "LU1272399756",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Global Equity Climate Transition AD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000ZI14",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 25.94,
+        "3yr": 21.22,
+        "5yr": 11.17,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 24.368,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU1674673691",
+        "asset_class": "Equity",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Annually",
+        "twelve_month_yield": "0.33%"
+      }
+    },
+    {
+      "target_fund_name": "HSBC Global Investment Funds - Asia Pacific ex Japan Equity High Dividend S48M2SGD",
+      "target_manager": "HSBC AM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00001GKQF",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 29.57,
+        "3yr": 20.15,
+        "5yr": null,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 15.689,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU2584144385",
+        "asset_class": "Equity",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "2.55%"
+      }
+    },
+    {
+      "target_fund_name": "Goldman Sachs Emerging Markets CORE Equity Portfolio Base Acc USD Close",
+      "target_manager": "Goldman Sachs",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000004019",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 40.22,
+        "3yr": 23.16,
+        "5yr": 7.67,
+        "10yr": 8.91
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 31.83,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0313355587",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Fundsmith Equity Fund R EUR Acc",
+      "target_manager": "Fundsmith",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000O9HI",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 2.08,
+        "3yr": 3.71,
+        "5yr": 1.05,
+        "10yr": 8.42
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 57.8953,
+        "nav_currency": "EUR",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU0690374615",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Franklin Technology Fund A (Acc) USD",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0GBR04V77",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 34.05,
+        "3yr": 28.91,
+        "5yr": 11.04,
+        "10yr": 20.23
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 77.17,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0109392836",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Franklin India Fund A(acc)SGD",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000JTUS",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": -9.52,
+        "3yr": 2.37,
+        "5yr": 2.49,
+        "10yr": 5.74
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 21.38,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0536402901",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Franklin Income Fund A(Mdis)SGD-H1",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000000L30",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 9.33,
+        "3yr": 7.0,
+        "5yr": 3.48,
+        "10yr": 4.35
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 6.4,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU0320765646",
+        "asset_class": "Allocation",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "8.52%"
+      }
+    },
+    {
+      "target_fund_name": "Franklin Global Sukuk Fund A(Mdis)SGD",
+      "target_manager": "Franklin Templeton",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000PZA1",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 1.61,
+        "3yr": 1.96,
+        "5yr": -0.16,
+        "10yr": 1.78
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 7.75,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "2 - Cautious",
+        "isin": "LU0923116197",
+        "asset_class": "Fixed Income",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "5.83%"
+      }
+    },
+    {
+      "target_fund_name": "Fidelity Funds - Global Financial Services Fund A-Acc-SGD",
+      "target_manager": "Fidelity International",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000WVHP",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 11.94,
+        "3yr": 18.96,
+        "5yr": 8.82,
+        "10yr": 10.68
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 2.973,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "4 - Adventurous",
+        "isin": "LU1363072403",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Ascend Asia Trust Global Equity Fund Class A SGD (Hedged)",
+      "target_manager": "Ascend Asia AM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000017086",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 16.67,
+        "3yr": 6.72,
+        "5yr": -1.31,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 81.101,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SGXZ58547654",
+        "asset_class": "Equity",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Semi-Annually",
+        "twelve_month_yield": "0.00%"
+      }
+    },
+    {
+      "target_fund_name": "Ascend Asia Trust Global Multi Asset Growth Fund Class A USD",
+      "target_manager": "Ascend Asia AM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00001E447",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 15.73,
+        "3yr": 9.54,
+        "5yr": 2.24,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 153.595,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SGXZ13719315",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "Ascend Asia Trust Global Multi Asset Income Fund Class A USD",
+      "target_manager": "Ascend Asia AM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00001E44C",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 11.66,
+        "3yr": 11.11,
+        "5yr": 2.15,
+        "10yr": null
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 106.75,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "3 - Balanced",
+        "isin": "SGXZ71589303",
+        "asset_class": "Allocation",
+        "share_class_type": "Distributing",
+        "distribution_frequency": "Monthly",
+        "twelve_month_yield": "5.85%"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Technology Fund A2",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0GBR04AMX",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 41.74,
+        "3yr": 34.4,
+        "5yr": 12.69,
+        "10yr": 23.04
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 150.66,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0056508442",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Mining Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000000RN7",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 56.72,
+        "3yr": 21.09,
+        "5yr": 9.82,
+        "10yr": 11.5
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 9.09,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0330918003",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Healthscience Fund A2",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F0GBR04K8L",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 18.82,
+        "3yr": 6.6,
+        "5yr": 3.33,
+        "10yr": 8.24
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 77.78,
+        "nav_currency": "USD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "4 - Adventurous",
+        "isin": "LU0122379950",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Gold Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000002GJV",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 58.7,
+        "3yr": 46.57,
+        "5yr": 19.57,
+        "10yr": 8.44
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 16.06,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0368265764",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - World Energy Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000002GK3",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 41.77,
+        "3yr": 12.4,
+        "5yr": 19.23,
+        "10yr": 6.45
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 9.3,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "5 - Speculative",
+        "isin": "LU0368265418",
+        "asset_class": "Equity",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "BlackRock Global Funds - Global Allocation Fund A2 SGD Hedged",
+      "target_manager": "BlackRock",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F000000IK9",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 11.8,
+        "3yr": 11.31,
+        "5yr": 3.57,
+        "10yr": 5.75
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 21.42,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-17",
+        "risk_rating": "3 - Balanced",
+        "isin": "LU0308772762",
+        "asset_class": "Allocation",
+        "share_class_type": "Accumulating",
+        "distribution_frequency": "N"
+      }
+    },
+    {
+      "target_fund_name": "AXA World Funds - Global High Yield Bonds A Capitalisation SGD (Hedged)",
+      "target_manager": "AXA IM",
+      "matched_url": "https://fundprices.insurance.hsbc.com.sg/detail?id=F00000XKHS",
+      "match_confidence": 1.0,
+      "match_method": "ilp_center_direct_id",
+      "returns": {
+        "3mo": null,
+        "6mo": null,
+        "1yr": 1.4,
+        "3yr": 5.15,
+        "5yr": 1.95,
+        "10yr": 3.28
+      },
+      "ok": true,
+      "source": "ilp_center",
+      "extra": {
+        "nav": 139.47,
+        "nav_currency": "SGD",
+        "nav_as_of": "2026-08-14",
+        "risk_rating": "4 - Adventurous",
+        "isin": "LU0982017856",
+        "asset_class": "Fixed Income",
         "share_class_type": "Accumulating",
         "distribution_frequency": "N"
       }

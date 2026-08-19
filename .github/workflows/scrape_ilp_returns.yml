@@ -66,7 +66,26 @@ jobs:
       # annualised returns. No search, no fuzzy matching.
       # On a manual run you can pass a `limit` (e.g. 3) for a quick smoke
       # test; the scheduled runs leave it blank and scrape all 70.
+      #
+      # PYTHONUNBUFFERED=1 is the fix for a run that *looks* stuck with zero
+      # log output even though it's actually progressing fine: Python
+      # block-buffers stdout by default whenever it isn't attached to a real
+      # terminal (which it never is under Actions), so the script's
+      # per-fund print() lines were sitting in an internal buffer -- not
+      # flushed to the log until that buffer filled or the script exited.
+      # With 70 short lines that could mean minutes of dead-looking log
+      # before anything appeared, identical in appearance to a genuine hang.
+      # This forces every print() straight to the log as it happens.
+      #
+      # timeout-minutes here is a second, tighter safety net than the
+      # job-level 30 -- if a single fund page genuinely hangs (e.g. a
+      # page.goto()/selector wait that doesn't resolve the way the site's
+      # own timeouts expect), this fails the step in 15 rather than quietly
+      # burning the whole job budget with nothing to show for it.
       - name: Scrape ILP fund returns
+        timeout-minutes: 15
+        env:
+          PYTHONUNBUFFERED: "1"
         run: |
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             python scrape_ilp_returns.py --ids fund_ids.csv --out data/fund_returns.json --limit ${{ github.event.inputs.limit }}

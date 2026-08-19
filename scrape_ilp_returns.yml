@@ -2,11 +2,15 @@ name: Scrape ILP fund returns
 
 on:
   schedule:
-    # Every ~10 days at 6am SGT (22:00 UTC the day before). Cron can't do a
-    # true "every 10 days", so this runs on the 1st / 11th / 21st of each
-    # month -- gaps land between 8 and 11 days, close enough for annualised
-    # returns that barely move day to day.
-    - cron: '0 22 1,11,21 * *'
+    # Every 2 days at 6am SGT (22:00 UTC the day before). Cron has no native
+    # "every N days" step for day-of-month, so this uses */2 on the day
+    # field, which fires on the 1st/3rd/5th/.../31st of each month -- an
+    # odd-day pattern that's a 2-day gap almost everywhere, except the wrap
+    # from one month's last day to the next month's 1st, which can land 1
+    # or 3 days apart depending on whether that month has an odd or even
+    # number of days. Close enough for return/NAV data that barely moves
+    # day to day.
+    - cron: '0 22 */2 * *'
   workflow_dispatch:        # lets you trigger it by hand from the Actions tab
     inputs:
       limit:
@@ -73,17 +77,13 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
-      # data/fund_prices.json is written by the same script run above (the
-      # NAV comes off the same page fetch as the returns, no extra scrape) --
-      # commit it alongside fund_returns.json so the Fund Tracker table and
-      # the returns cards always update together.
       - name: Commit updated data
         if: always()
         run: |
           git config user.name "fund-price-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/fund_returns.json data/fund_prices.json
-          git diff --quiet --cached || git commit -m "Update ILP fund returns + prices $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git add data/fund_returns.json
+          git diff --quiet --cached || git commit -m "Update ILP fund returns $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
           # The branch can move between checkout and here (e.g. a web-UI edit
           # while the job runs), which rejects a plain push as non-fast-forward.

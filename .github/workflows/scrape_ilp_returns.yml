@@ -42,15 +42,24 @@ jobs:
       # so --with-deps works here.
       #
       # DEBIAN_FRONTEND=noninteractive stops apt-get from blocking forever
-      # on a debconf prompt (e.g. tzdata) it has no console to answer --
-      # the classic cause of this step looking "stuck" with no error and
-      # no further output. timeout-minutes fails the step outright after
-      # 8 minutes instead of hanging for the runner's full 6-hour limit if
-      # something like that still happens.
+      # on a debconf prompt (e.g. tzdata) it has no console to answer.
+      # NEEDRESTART_MODE=a is a second, separate fix -- Ubuntu 24.04 runners
+      # ship `needrestart` enabled by default, which pops its own "which
+      # services should be restarted?" prompt (not a debconf prompt, so
+      # DEBIAN_FRONTEND alone doesn't silence it) whenever apt installs a
+      # package that touches a running service's libraries. 'a' tells it to
+      # restart everything automatically instead of asking. This combo is
+      # the actual confirmed cause of an install that hung for 8+ minutes
+      # with no further apt output after the package lists finished
+      # fetching -- both env vars are needed, not just one.
+      # timeout-minutes fails the step outright after 8 minutes instead of
+      # hanging for the runner's full 6-hour limit if something like this
+      # happens again.
       - name: Install Playwright browser + OS deps
         timeout-minutes: 8
         env:
           DEBIAN_FRONTEND: noninteractive
+          NEEDRESTART_MODE: a
         run: playwright install --with-deps chromium
 
       # Visit each fund's exact ILP Fund Center page by id and read its

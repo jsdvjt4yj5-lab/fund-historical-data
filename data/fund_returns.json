@@ -1,5 +1,5 @@
 {
-  "last_scraped": "2026-11-14T02:22:42+00:00",
+  "last_scraped": "2026-11-16T01:57:18+00:00",
   "source": "hsbc_ilp_center",
   "note": "Scraped fund-by-fund from HSBC Life Singapore's ILP Fund Center (fundprices.insurance.hsbc.com.sg) by exact fund id. The 'Annualised returns' block exposes 1yr/3yr/5yr/10yr only, so 3mo/6mo are always null.",
   "periods": [
@@ -23,17 +23,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -0.95,
-        "3yr": 7.53,
-        "5yr": -0.04,
-        "10yr": 1.6
+        "1yr": -1.04,
+        "3yr": 7.51,
+        "5yr": -0.1,
+        "10yr": 1.56
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 21.98,
+        "nav": 21.91,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "5 - Speculative",
         "isin": "LU0592506637",
         "asset_class": "Fixed Income",
@@ -51,17 +51,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -1.79,
-        "3yr": 4.68,
-        "5yr": 0.84,
+        "1yr": -1.59,
+        "3yr": 4.67,
+        "5yr": 0.82,
         "10yr": 2.23
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 23.56,
+        "nav": 23.54,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "4 - Adventurous",
         "isin": "LU0592507445",
         "asset_class": "Fixed Income",
@@ -79,17 +79,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 6.03,
-        "3yr": 13.18,
-        "5yr": 7.45,
-        "10yr": 9.86
+        "1yr": 7.25,
+        "3yr": 13.26,
+        "5yr": 7.49,
+        "10yr": 9.87
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 55.37,
+        "nav": 55.45,
         "nav_currency": "USD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "3 - Balanced",
         "isin": "LU0861579265",
         "asset_class": "Equity",
@@ -107,17 +107,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -1.6,
-        "3yr": 7.35,
-        "5yr": -0.15,
-        "10yr": 10.49
+        "1yr": -0.17,
+        "3yr": 7.32,
+        "5yr": -0.21,
+        "10yr": 10.45
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 59.81,
+        "nav": 59.61,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "3 - Balanced",
         "isin": "LU0592508096",
         "asset_class": "Equity",
@@ -193,8 +193,8 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 3.57,
-        "3yr": 4.39,
+        "1yr": 3.55,
+        "3yr": 4.37,
         "5yr": 3.84,
         "10yr": 2.61
       },
@@ -203,7 +203,7 @@
       "extra": {
         "nav": 132.06,
         "nav_currency": "USD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "1 - Very Cautious",
         "isin": "LU0568621618",
         "asset_class": "Money Market",
@@ -221,17 +221,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -4.89,
-        "3yr": 2.07,
-        "5yr": -2.54,
-        "10yr": 0.16
+        "1yr": -4.82,
+        "3yr": 2.0,
+        "5yr": -2.57,
+        "10yr": 0.14
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 55.96,
+        "nav": 55.85,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "2 - Cautious",
         "isin": "LU1883849512",
         "asset_class": "Fixed Income",
@@ -249,17 +249,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -2.3,
-        "3yr": 4.41,
-        "5yr": -0.89,
-        "10yr": 1.27
+        "1yr": -2.22,
+        "3yr": 4.35,
+        "5yr": -0.92,
+        "10yr": 1.26
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 108.97,
+        "nav": 108.79,
         "nav_currency": "USD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "2 - Cautious",
         "isin": "LU1883849603",
         "asset_class": "Fixed Income",
@@ -277,17 +277,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 4.03,
-        "3yr": 14.17,
-        "5yr": 7.84,
-        "10yr": 13.52
+        "1yr": 5.33,
+        "3yr": 13.88,
+        "5yr": 7.69,
+        "10yr": 13.44
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 734.91,
+        "nav": 729.8,
         "nav_currency": "USD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "3 - Balanced",
         "isin": "LU1883854355",
         "asset_class": "Equity",
@@ -361,17 +361,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 9.69,
-        "3yr": 10.32,
-        "5yr": 5.73,
-        "10yr": 5.96
+        "1yr": 9.9,
+        "3yr": 10.0,
+        "5yr": 5.55,
+        "10yr": 5.87
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 21.05,
+        "nav": 20.87,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "3 - Balanced",
         "isin": "LU0889566641",
         "asset_class": "Equity",
@@ -821,17 +821,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -3.71,
+        "1yr": -3.68,
         "3yr": 2.94,
-        "5yr": -1.79,
+        "5yr": -1.84,
         "10yr": null
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 78.406,
+        "nav": 78.239,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "2 - Cautious",
         "isin": "IE00BM8DBS97",
         "asset_class": "Fixed Income",
@@ -851,17 +851,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -4.07,
-        "3yr": 3.52,
-        "5yr": -0.1,
-        "10yr": 1.78
+        "1yr": -4.09,
+        "3yr": 3.42,
+        "5yr": -0.14,
+        "10yr": 1.75
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 13.77,
+        "nav": 13.74,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "3 - Balanced",
         "isin": "IE00BRJFZM13",
         "asset_class": "Fixed Income",
@@ -1528,17 +1528,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 14.31,
-        "3yr": 19.87,
-        "5yr": 6.61,
-        "10yr": 8.13
+        "1yr": 13.7,
+        "3yr": 19.59,
+        "5yr": 6.58,
+        "10yr": 8.12
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 28.75,
+        "nav": 28.72,
         "nav_currency": "USD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "5 - Speculative",
         "isin": "LU0313355587",
         "asset_class": "Equity",
@@ -1584,17 +1584,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 13.01,
-        "3yr": 24.64,
-        "5yr": 6.34,
-        "10yr": 19.02
+        "1yr": 14.07,
+        "3yr": 23.87,
+        "5yr": 5.96,
+        "10yr": 18.8
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 70.09,
+        "nav": 68.84,
         "nav_currency": "USD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "5 - Speculative",
         "isin": "LU0109392836",
         "asset_class": "Equity",
@@ -1612,17 +1612,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -7.68,
-        "3yr": 2.87,
-        "5yr": 1.04,
-        "10yr": 6.04
+        "1yr": -7.45,
+        "3yr": 2.77,
+        "5yr": 0.92,
+        "10yr": 5.98
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 22.37,
+        "nav": 22.23,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "5 - Speculative",
         "isin": "LU0536402901",
         "asset_class": "Equity",
@@ -1640,7 +1640,7 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": 5.28,
+        "1yr": 5.61,
         "3yr": 8.01,
         "5yr": 2.96,
         "10yr": 4.2
@@ -1650,7 +1650,7 @@
       "extra": {
         "nav": 6.15,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "3 - Balanced",
         "isin": "LU0320765646",
         "asset_class": "Allocation",
@@ -1670,17 +1670,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -2.35,
-        "3yr": 2.05,
-        "5yr": -0.24,
-        "10yr": 1.5
+        "1yr": -2.36,
+        "3yr": 2.04,
+        "5yr": -0.27,
+        "10yr": 1.49
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 7.56,
+        "nav": 7.55,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "2 - Cautious",
         "isin": "LU0923116197",
         "asset_class": "Fixed Income",
@@ -1984,17 +1984,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -1.09,
-        "3yr": 4.46,
-        "5yr": 1.43,
-        "10yr": 2.91
+        "1yr": -0.96,
+        "3yr": 4.36,
+        "5yr": 1.4,
+        "10yr": 2.9
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 136.42,
+        "nav": 136.25,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "4 - Adventurous",
         "isin": "LU0982017856",
         "asset_class": "Fixed Income",
@@ -2012,17 +2012,17 @@
       "returns": {
         "3mo": null,
         "6mo": null,
-        "1yr": -3.95,
-        "3yr": 3.61,
-        "5yr": 0.7,
-        "10yr": 2.53
+        "1yr": -3.87,
+        "3yr": 3.49,
+        "5yr": 0.65,
+        "10yr": 2.51
       },
       "ok": true,
       "source": "ilp_center",
       "extra": {
-        "nav": 8.66,
+        "nav": 8.64,
         "nav_currency": "SGD",
-        "nav_as_of": "2026-11-12",
+        "nav_as_of": "2026-11-13",
         "risk_rating": "3 - Balanced",
         "isin": "IE00B91RQ825",
         "asset_class": "Fixed Income",
